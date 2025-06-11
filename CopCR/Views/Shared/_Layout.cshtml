@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>CopCR - @ViewBag.Title</title>
+
+    <!-- Bootstrap y CSS -->
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css?v=2" />
+    <link rel="stylesheet" type="text/css" href="~/Content/myStyle.css?v=3" />
+    <link rel="stylesheet" type="text/css" href="~/Content/responsive.css" />
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                    <div class="logo_box">
+                        <img src="~/Content/Images/logo.png" alt="CopCR – vigilancia ciudadana">
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mr-2">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">Inicio <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Reportar Incidente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#map">Ver Mapa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Estadísticas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Login", "Home")">Login/Registro</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Vistas Contenido -->
+    <main>
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="container-fluid footer_section">
+        <div>
+            <div class="row">
+                <div class="col-md-6 mb-2 mb-md-0">
+                    <p class="mb-1">
+                        Correo:
+                        <a href="mailto:comitedevecinos@email.com" class="text-light">
+                            comitedevecinos@email.com
+                        </a>
+                    </p>
+                    <p class="mb-0">
+                        Teléfono:
+                        <a href="tel:88888888" class="text-light">8888-8888</a>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 CopCR. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+</body>
+</html>
+
+
