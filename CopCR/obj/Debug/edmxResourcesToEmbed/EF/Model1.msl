@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="CopCR_DevModelStoreContainer" CdmEntityContainer="CopCR_DevEntities1">
+  <EntityContainerMapping StorageEntityContainer="CopCR_DevModelStoreContainer" CdmEntityContainer="CopCR_DevEntities">
     <EntitySetMapping Name="Administrador">
       <EntityTypeMapping TypeName="CopCR_DevModel.Administrador">
         <MappingFragment StoreEntitySet="Administrador">
@@ -140,29 +140,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CopCR_DevModel.Store.sp_alterdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CopCR_DevModel.Store.sp_creatediagram" />
-    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CopCR_DevModel.Store.sp_dropdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CopCR_DevModel.Store.sp_helpdiagramdefinition">
+    <FunctionImportMapping FunctionImportName="RegistroUsuario" FunctionName="CopCR_DevModel.Store.RegistroUsuario" />
+    <FunctionImportMapping FunctionImportName="ValidarInicioSesion" FunctionName="CopCR_DevModel.Store.ValidarInicioSesion">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="CopCR_DevModel.sp_helpdiagramdefinition_Result">
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
+        <ComplexTypeMapping TypeName="CopCR_DevModel.ValidarInicioSesion_Result">
+          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+          <ScalarProperty Name="CedulaIdentidad" ColumnName="CedulaIdentidad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="FotoPerfilUrl" ColumnName="FotoPerfilUrl" />
+          <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CopCR_DevModel.Store.sp_helpdiagrams">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="CopCR_DevModel.sp_helpdiagrams_Result">
-          <ScalarProperty Name="Database" ColumnName="Database" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Owner" ColumnName="Owner" />
-          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CopCR_DevModel.Store.sp_renamediagram" />
-    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CopCR_DevModel.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

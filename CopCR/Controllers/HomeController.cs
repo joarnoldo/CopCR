@@ -1,10 +1,11 @@
-﻿using CopCR.Models;
-using CopCR.Services;
-using KProyecto.Models;
-using System;
+﻿using System;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using BCrypt.Net;
+using CopCR.EF;
+using CopCR.Models;
+using CopCR.Services;
 
 namespace CopCR.Controllers
 {
@@ -12,7 +13,7 @@ namespace CopCR.Controllers
     {
         readonly Utilitarios service = new Utilitarios();
 
-        #region Index (Login)
+        #region Login
 
         [HttpGet]
         public ActionResult Login()
@@ -23,24 +24,30 @@ namespace CopCR.Controllers
         [HttpPost]
         public ActionResult Login(Autenticacion autenticacion)
         {
-            using (var dbContext = new CopCR_DevEntities1())
+            using (var db = new CopCR_DevEntities())
             {
-                var result = dbContext.ValidarInicioSesion(
-                    autenticacion.CedulaIdentidad,
-                    autenticacion.Contrasena).FirstOrDefault();
+                // 1) Buscar usuario activo por cédula
+                var user = db.Usuario
+                             .FirstOrDefault(u =>
+                                 u.CedulaIdentidad == autenticacion.CedulaIdentidad &&
+                                 u.Activo);
 
-                if (result != null)
+                // 2) Verificar contraseña con BCrypt
+                if (user != null && BCrypt.Net.BCrypt.Verify(autenticacion.Contrasena, user.Contrasena))
                 {
-                    Session["IdUsuario"] = result.IdUsuario;
-                    Session["Nombre"] = result.Nombre;
-                    Session["IdRol"] = result.IdRol;
-                    Session["DescripcionRol"] = result.DescripcionRol;
+                    // 3) Guardar datos en sesión
+                    Session["IdUsuario"] = user.UsuarioID;
+                    Session["Nombre"] = $"{user.Nombre} {user.PrimerApellido}";
+                    // 4) Detectar si es admin o usuario final
+                    bool esAdmin = db.Administrador.Any(a => a.UsuarioID == user.UsuarioID);
+                    Session["IdRol"] = esAdmin ? "ADMIN" : "USER";
+                    Session["DescripcionRol"] = esAdmin ? "Administrador" : "UsuarioFinal";
 
                     return RedirectToAction("Index", "Home");
                 }
 
-                ViewBag.Mensaje = "No se pudo validar su información";
-                return View("Login");
+                ViewBag.Mensaje = "Cédula o contraseña incorrectos";
+                return View();
             }
         }
 
@@ -57,25 +64,39 @@ namespace CopCR.Controllers
         [HttpPost]
         public ActionResult RegistroUsuario(Autenticacion autenticacion)
         {
-            using (var dbContext = new CopCR_DevEntities1())
+            if (!ModelState.IsValid)
+                return View(autenticacion);
+
+            // 1) Hashear contraseña
+            string hash = BCrypt.Net.BCrypt.HashPassword(autenticacion.Contrasena);
+
+            // 2) Llamar al SP RegistroUsuario (incluye Usuario y UsuarioFinal)
+            using (var db = new CopCR_DevEntities())
             {
-                var result = dbContext.RegistroUsuario(
+                var result = db.RegistroUsuario(
                     autenticacion.CedulaIdentidad,
                     autenticacion.Nombre,
+                    autenticacion.PrimerApellido,
+                    autenticacion.SegundoApellido,
                     autenticacion.Email,
-                    autenticacion.Contrasena);
+                    autenticacion.NombreUsuario,
+                    hash,
+                    autenticacion.FechaNacimiento,
+                    autenticacion.TelefonoContacto,
+                    null // FotoPerfilUrl opcional
+                );
 
                 if (result > 0)
-                    return RedirectToAction("Index", "Home");
-
-                ViewBag.Mensaje = "No se pudo registrar su información";
-                return View();
+                    return RedirectToAction("Login", "Home");
             }
+
+            ViewBag.Mensaje = "No se pudo registrar su información";
+            return View(autenticacion);
         }
 
         #endregion
 
-        #region RecuperarContrasena
+        #region Recuperar contraseña
 
         [HttpGet]
         public ActionResult RecuperarContrasena()
@@ -86,29 +107,29 @@ namespace CopCR.Controllers
         [HttpPost]
         public ActionResult RecuperarContrasena(Autenticacion autenticacion)
         {
-            using (var dbContext = new CopCR_DevEntities1())
+            using (var db = new CopCR_DevEntities())
             {
-                var result = dbContext.TUsuario
-                    .FirstOrDefault(u => u.Email == autenticacion.Email);
+                var user = db.Usuario
+                             .FirstOrDefault(u => u.Email == autenticacion.Email);
 
-                if (result != null)
+                if (user != null)
                 {
+                    // Generar y hashear nueva contraseña
                     var nuevaContrasena = service.GenerarPassword();
-                    result.Contrasena = nuevaContrasena;
-                    dbContext.SaveChanges();
+                    user.Contrasena = BCrypt.Net.BCrypt.HashPassword(nuevaContrasena);
+                    db.SaveChanges();
 
-                    StringBuilder mensaje = new StringBuilder();
+                    var sb = new StringBuilder();
+                    sb.Append($"Estimado/a {user.Nombre}<br>");
+                    sb.Append("Se ha generado una solicitud de recuperación de contraseña.<br><br>");
+                    sb.Append($"Su contraseña temporal es: <strong>{nuevaContrasena}</strong><br><br>");
+                    sb.Append("Por favor cambie su contraseña después de iniciar sesión.<br>");
+                    sb.Append("Gracias por usar CopCR.");
 
-                    mensaje.Append("Estimado/a " + result.Nombre + "<br>");
-                    mensaje.Append("Se ha generado una solicitud de recuperación de contraseña.<br><br>");
-                    mensaje.Append("Su contraseña temporal es: <strong>" + nuevaContrasena + "</strong><br><br>");
-                    mensaje.Append("Por favor cambie su contraseña después de iniciar sesión.<br>");
-                    mensaje.Append("Gracias por usar CopCR.");
+                    if (service.EnviarCorreo(user.Email, sb.ToString(), "Recuperación de Acceso"))
+                        return RedirectToAction("Login", "Home");
 
-                    if (service.EnviarCorreo(result.Email, mensaje.ToString(), "Recuperación de Acceso"))
-                        return RedirectToAction("Index", "Home");
-
-                    ViewBag.Mensaje = "No se pudo enviar la notificación de acceso al correo";
+                    ViewBag.Mensaje = "No se pudo enviar la notificación al correo";
                     return View();
                 }
 
@@ -119,7 +140,7 @@ namespace CopCR.Controllers
 
         #endregion
 
-        #region Sesión y vista Index
+        #region Área protegida
 
         [FiltroSesion]
         [HttpGet]
@@ -133,9 +154,11 @@ namespace CopCR.Controllers
         public ActionResult CerrarSesion()
         {
             Session.Clear();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Home");
         }
 
         #endregion
     }
 }
+
+

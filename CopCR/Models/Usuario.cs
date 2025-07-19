@@ -1,4 +1,4 @@
-﻿namespace KProyecto.Models
+﻿namespace CopCR.Models
 {
     public class Usuario
     {
