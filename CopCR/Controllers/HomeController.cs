@@ -1,11 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
-using BCrypt.Net;
+﻿using BCrypt.Net;
 using CopCR.EF;
 using CopCR.Models;
 using CopCR.Services;
+using System;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Web.Mvc;
 
 namespace CopCR.Controllers
 {
@@ -26,19 +27,19 @@ namespace CopCR.Controllers
         {
             using (var db = new CopCR_DevEntities())
             {
-                // 1) Buscar usuario activo por cédula
+                //Buscar usuario activo por cédula
                 var user = db.Usuario
                              .FirstOrDefault(u =>
                                  u.CedulaIdentidad == autenticacion.CedulaIdentidad &&
                                  u.Activo);
 
-                // 2) Verificar contraseña con BCrypt
+                //Verificar contraseña con BCrypt
                 if (user != null && BCrypt.Net.BCrypt.Verify(autenticacion.Contrasena, user.Contrasena))
                 {
-                    // 3) Guardar datos en sesión
+                    //Guardar datos en sesión
                     Session["IdUsuario"] = user.UsuarioID;
                     Session["Nombre"] = $"{user.Nombre} {user.PrimerApellido}";
-                    // 4) Detectar si es admin o usuario final
+                    //Detectar si es admin o usuario final
                     bool esAdmin = db.Administrador.Any(a => a.UsuarioID == user.UsuarioID);
                     Session["IdRol"] = esAdmin ? "ADMIN" : "USER";
                     Session["DescripcionRol"] = esAdmin ? "Administrador" : "UsuarioFinal";
@@ -68,29 +69,61 @@ namespace CopCR.Controllers
                 return View(autenticacion);
 
             // 1) Hashear contraseña
-            string hash = BCrypt.Net.BCrypt.HashPassword(autenticacion.Contrasena);
+            var hash = BCrypt.Net.BCrypt.HashPassword(autenticacion.Contrasena);
 
-            // 2) Llamar al SP RegistroUsuario (incluye Usuario y UsuarioFinal)
+            //Parámetros
+            var pCedula = new System.Data.SqlClient.SqlParameter("@CedulaIdentidad", autenticacion.CedulaIdentidad);
+            var pNombre = new System.Data.SqlClient.SqlParameter("@Nombre", autenticacion.Nombre);
+            var pPriApe = new System.Data.SqlClient.SqlParameter("@PrimerApellido", autenticacion.PrimerApellido);
+            var pSegApe = new System.Data.SqlClient.SqlParameter("@SegundoApellido", autenticacion.SegundoApellido);
+            var pEmail = new System.Data.SqlClient.SqlParameter("@Email", autenticacion.Email);
+            var pUsr = new System.Data.SqlClient.SqlParameter("@NombreUsuario", autenticacion.NombreUsuario);
+            var pHash = new System.Data.SqlClient.SqlParameter("@Contrasena", hash);
+            var pFechaNac = new System.Data.SqlClient.SqlParameter("@FechaNacimiento", autenticacion.FechaNacimiento);
+            var pTelefono = new System.Data.SqlClient.SqlParameter("@TelefonoContacto", autenticacion.TelefonoContacto);
+            var pFoto = new SqlParameter("@FotoPerfilUrl", (object)autenticacion.FotoPerfilUrl ?? DBNull.Value);
+
             using (var db = new CopCR_DevEntities())
             {
-                var result = db.RegistroUsuario(
-                    autenticacion.CedulaIdentidad,
-                    autenticacion.Nombre,
-                    autenticacion.PrimerApellido,
-                    autenticacion.SegundoApellido,
-                    autenticacion.Email,
-                    autenticacion.NombreUsuario,
-                    hash,
-                    autenticacion.FechaNacimiento,
-                    autenticacion.TelefonoContacto,
-                    null 
-                );
 
+            var sql = @" DECLARE @ReturnValue INT;
+            EXEC @ReturnValue = dbo.RegistroUsuario 
+                 @CedulaIdentidad,
+                 @Nombre,
+                 @PrimerApellido,
+                 @SegundoApellido,
+                 @Email,
+                 @NombreUsuario,
+                 @Contrasena,
+                 @FechaNacimiento,
+                 @TelefonoContacto,
+                 @FotoPerfilUrl;
+            SELECT @ReturnValue;";
+
+                var result = db.Database.SqlQuery<int>(
+                    sql,
+                    pCedula, pNombre, pPriApe, pSegApe,
+                    pEmail, pUsr, pHash, pFechaNac, pTelefono, pFoto
+                ).Single();
+
+                //Mensajes del código devuelto
                 if (result == 0)
                     return RedirectToAction("Login", "Home");
+
+                switch (result)
+                {
+                    case -2:
+                        ViewBag.Mensaje = "Ya existe un usuario con ese correo.";
+                        break;
+                    case -3:
+                        ViewBag.Mensaje = "Ya existe un usuario con esa cédula.";
+                        break;
+                    default:
+                        ViewBag.Mensaje = $"No se pudo registrar su información (código {result}).";
+                        break;
+                }
             }
 
-            ViewBag.Mensaje = "No se pudo registrar su información";
             return View(autenticacion);
         }
 
