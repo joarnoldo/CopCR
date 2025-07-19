@@ -23,7 +23,7 @@ namespace CopCR.Controllers
         [HttpPost]
         public ActionResult Login(Autenticacion autenticacion)
         {
-            using (var dbContext = new CopCREntities())
+            using (var dbContext = new CopCR_DevEntities1())
             {
                 var result = dbContext.ValidarInicioSesion(
                     autenticacion.CedulaIdentidad,
@@ -57,7 +57,7 @@ namespace CopCR.Controllers
         [HttpPost]
         public ActionResult RegistroUsuario(Autenticacion autenticacion)
         {
-            using (var dbContext = new CopCREntities())
+            using (var dbContext = new CopCR_DevEntities1())
             {
                 var result = dbContext.RegistroUsuario(
                     autenticacion.CedulaIdentidad,
@@ -86,7 +86,7 @@ namespace CopCR.Controllers
         [HttpPost]
         public ActionResult RecuperarContrasena(Autenticacion autenticacion)
         {
-            using (var dbContext = new CopCREntities())
+            using (var dbContext = new CopCR_DevEntities1())
             {
                 var result = dbContext.TUsuario
                     .FirstOrDefault(u => u.Email == autenticacion.Email);

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb0ecdd0751a4cf6958a3a5cbaac77e3" Name="Diagram1">
+        <EntityTypeShape EntityType="CopCR_DevModel.Administrador" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.Canton" Width="1.5" PointX="1.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.CategoriaIncidente" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.Direccion" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.Distrito" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.Incidente" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.IncidenteAdjunto" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.Notificacion" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.Provincia" Width="1.5" PointX="1.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.Usuario" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopCR_DevModel.UsuarioFinal" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Admin_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Incidente_Administrador" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Canton_Provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Distrito_Canton" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Incidente_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Direccion_Distrito" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Direccion_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Incidente_Direccion" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Adjunto_Incidente" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Incidente_UsuarioFinal" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Notificacion_Incidente" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Adjunto_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_Notificacion_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="CopCR_DevModel.FK_UsuarioFinal_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

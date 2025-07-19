@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CopCR_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administrador">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="int" Nullable="false" />
+    <Property Name="TelefonoInterno" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Canton">
+    <Key>
+      <PropertyRef Name="CantonID" />
+    </Key>
+    <Property Name="CantonID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProvinciaID" Type="tinyint" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoriaIncidente">
+    <Key>
+      <PropertyRef Name="CategoriaIncidenteID" />
+    </Key>
+    <Property Name="CategoriaIncidenteID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Direccion">
+    <Key>
+      <PropertyRef Name="DireccionID" />
+    </Key>
+    <Property Name="DireccionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioID" Type="int" Nullable="false" />
+    <Property Name="DistritoID" Type="smallint" Nullable="false" />
+    <Property Name="Barrio" Type="nvarchar" MaxLength="100" />
+    <Property Name="Linea" Type="nvarchar" MaxLength="200" />
+    <Property Name="CodigoPostal" Type="char" MaxLength="5" />
+    <Property Name="Latitud" Type="decimal" Precision="9" Scale="6" />
+    <Property Name="Longitud" Type="decimal" Precision="9" Scale="6" />
+    <Property Name="GeoLocation" Type="geography" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Distrito">
+    <Key>
+      <PropertyRef Name="DistritoID" />
+    </Key>
+    <Property Name="DistritoID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CantonID" Type="smallint" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Incidente">
+    <Key>
+      <PropertyRef Name="IncidenteID" />
+    </Key>
+    <Property Name="IncidenteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioID" Type="int" Nullable="false" />
+    <Property Name="DireccionID" Type="int" />
+    <Property Name="Latitud" Type="decimal" Precision="9" Scale="6" Nullable="false" />
+    <Property Name="Longitud" Type="decimal" Precision="9" Scale="6" Nullable="false" />
+    <Property Name="GeoLocation" Type="geography" StoreGeneratedPattern="Computed" />
+    <Property Name="Titulo" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaReporte" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="tinyint" Nullable="false" />
+    <Property Name="CategoriaIncidenteID" Type="tinyint" Nullable="false" />
+    <Property Name="AdministradorID" Type="int" />
+    <Property Name="FechaResolucion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="IncidenteAdjunto">
+    <Key>
+      <PropertyRef Name="AdjuntoID" />
+    </Key>
+    <Property Name="AdjuntoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IncidenteID" Type="int" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="FechaSubida" Type="datetime" Nullable="false" />
+    <Property Name="UsuarioID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Notificacion">
+    <Key>
+      <PropertyRef Name="NotificacionID" />
+    </Key>
+    <Property Name="NotificacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioID" Type="int" Nullable="false" />
+    <Property Name="IncidenteID" Type="int" Nullable="false" />
+    <Property Name="Mensaje" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="IsLeido" Type="bit" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Provincia">
+    <Key>
+      <PropertyRef Name="ProvinciaID" />
+    </Key>
+    <Property Name="ProvinciaID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CedulaIdentidad" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PrimerApellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SegundoApellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="NombreUsuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Contrasena" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="FotoPerfilUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsuarioFinal">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="int" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="date" />
+    <Property Name="TelefonoContacto" Type="nvarchar" MaxLength="20" />
+    <Property Name="PuntosConfianza" Type="int" Nullable="false" />
+    <Property Name="AceptaNotificacionesPush" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Adjunto_Incidente">
+    <End Role="Incidente" Type="Self.Incidente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="IncidenteAdjunto" Type="Self.IncidenteAdjunto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Incidente">
+        <PropertyRef Name="IncidenteID" />
+      </Principal>
+      <Dependent Role="IncidenteAdjunto">
+        <PropertyRef Name="IncidenteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adjunto_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="IncidenteAdjunto" Type="Self.IncidenteAdjunto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="IncidenteAdjunto">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Administrador">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Canton_Provincia">
+    <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+    <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincia">
+        <PropertyRef Name="ProvinciaID" />
+      </Principal>
+      <Dependent Role="Canton">
+        <PropertyRef Name="ProvinciaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direccion_Distrito">
+    <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distrito">
+        <PropertyRef Name="DistritoID" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="DistritoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direccion_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Distrito_Canton">
+    <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+    <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canton">
+        <PropertyRef Name="CantonID" />
+      </Principal>
+      <Dependent Role="Distrito">
+        <PropertyRef Name="CantonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Incidente_Administrador">
+    <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+    <End Role="Incidente" Type="Self.Incidente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Administrador">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Incidente">
+        <PropertyRef Name="AdministradorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Incidente_Categoria">
+    <End Role="CategoriaIncidente" Type="Self.CategoriaIncidente" Multiplicity="1" />
+    <End Role="Incidente" Type="Self.Incidente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriaIncidente">
+        <PropertyRef Name="CategoriaIncidenteID" />
+      </Principal>
+      <Dependent Role="Incidente">
+        <PropertyRef Name="CategoriaIncidenteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Incidente_Direccion">
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="0..1" />
+    <End Role="Incidente" Type="Self.Incidente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Direccion">
+        <PropertyRef Name="DireccionID" />
+      </Principal>
+      <Dependent Role="Incidente">
+        <PropertyRef Name="DireccionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Incidente_UsuarioFinal">
+    <End Role="UsuarioFinal" Type="Self.UsuarioFinal" Multiplicity="1" />
+    <End Role="Incidente" Type="Self.Incidente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioFinal">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Incidente">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notificacion_Incidente">
+    <End Role="Incidente" Type="Self.Incidente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Notificacion" Type="Self.Notificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Incidente">
+        <PropertyRef Name="IncidenteID" />
+      </Principal>
+      <Dependent Role="Notificacion">
+        <PropertyRef Name="IncidenteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notificacion_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Notificacion" Type="Self.Notificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Notificacion">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioFinal_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UsuarioFinal" Type="Self.UsuarioFinal" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="UsuarioFinal">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="CopCR_DevModelStoreContainer">
+    <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoriaIncidente" EntityType="Self.CategoriaIncidente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Incidente" EntityType="Self.Incidente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IncidenteAdjunto" EntityType="Self.IncidenteAdjunto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notificacion" EntityType="Self.Notificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuarioFinal" EntityType="Self.UsuarioFinal" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Adjunto_Incidente" Association="Self.FK_Adjunto_Incidente">
+      <End Role="Incidente" EntitySet="Incidente" />
+      <End Role="IncidenteAdjunto" EntitySet="IncidenteAdjunto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adjunto_Usuario" Association="Self.FK_Adjunto_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="IncidenteAdjunto" EntitySet="IncidenteAdjunto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_Usuario" Association="Self.FK_Admin_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Administrador" EntitySet="Administrador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Canton_Provincia" Association="Self.FK_Canton_Provincia">
+      <End Role="Provincia" EntitySet="Provincia" />
+      <End Role="Canton" EntitySet="Canton" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direccion_Distrito" Association="Self.FK_Direccion_Distrito">
+      <End Role="Distrito" EntitySet="Distrito" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direccion_Usuario" Association="Self.FK_Direccion_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Distrito_Canton" Association="Self.FK_Distrito_Canton">
+      <End Role="Canton" EntitySet="Canton" />
+      <End Role="Distrito" EntitySet="Distrito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Incidente_Administrador" Association="Self.FK_Incidente_Administrador">
+      <End Role="Administrador" EntitySet="Administrador" />
+      <End Role="Incidente" EntitySet="Incidente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Incidente_Categoria" Association="Self.FK_Incidente_Categoria">
+      <End Role="CategoriaIncidente" EntitySet="CategoriaIncidente" />
+      <End Role="Incidente" EntitySet="Incidente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Incidente_Direccion" Association="Self.FK_Incidente_Direccion">
+      <End Role="Direccion" EntitySet="Direccion" />
+      <End Role="Incidente" EntitySet="Incidente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Incidente_UsuarioFinal" Association="Self.FK_Incidente_UsuarioFinal">
+      <End Role="UsuarioFinal" EntitySet="UsuarioFinal" />
+      <End Role="Incidente" EntitySet="Incidente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notificacion_Incidente" Association="Self.FK_Notificacion_Incidente">
+      <End Role="Incidente" EntitySet="Incidente" />
+      <End Role="Notificacion" EntitySet="Notificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notificacion_Usuario" Association="Self.FK_Notificacion_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Notificacion" EntitySet="Notificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioFinal_Usuario" Association="Self.FK_UsuarioFinal_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="UsuarioFinal" EntitySet="UsuarioFinal" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
