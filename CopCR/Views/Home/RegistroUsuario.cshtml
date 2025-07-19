@@ -1,0 +1,128 @@
+﻿@model CopCR.Models.Autenticacion
+
+@{
+    ViewBag.Title = "Registro de Usuario";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<section class="login_section">
+    <div class="login_card">
+        <h2>Registro de Usuario</h2>
+
+        @using (Html.BeginForm("RegistroUsuario", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal m-t-20" }))
+        {
+            if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
+            {
+                <div class="alert alert-warning text-center">
+                    @ViewBag.Mensaje
+                </div>
+            }
+
+            <div class="form-group">
+                <label for="CedulaIdentidad">Cédula de Identidad</label>
+                @Html.TextBoxFor(x => x.CedulaIdentidad, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Ej: 1-1234-1234",
+                    @required = "required"
+                })
+            </div>
+
+            <div class="form-group">
+                <label for="Nombre">Nombre</label>
+                @Html.TextBoxFor(x => x.Nombre, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Nombre",
+                    @required = "required"
+                })
+            </div>
+
+            <div class="form-group">
+                <label for="PrimerApellido">Primer Apellido</label>
+                @Html.TextBoxFor(x => x.PrimerApellido, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Primer Apellido",
+                    @required = "required"
+                })
+            </div>
+
+            <div class="form-group">
+                <label for="SegundoApellido">Segundo Apellido</label>
+                @Html.TextBoxFor(x => x.SegundoApellido, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Segundo Apellido",
+                    @required = "required"
+                })
+            </div>
+
+            <div class="form-group">
+                <label for="Email">Correo Electrónico</label>
+                @Html.TextBoxFor(x => x.Email, new
+                {
+                    @type = "email",
+                    @class = "form-control",
+                    @placeholder = "Correo Electrónico",
+                    @required = "required"
+                })
+            </div>
+
+            <div class="form-group">
+                <label for="NombreUsuario">Nombre de Usuario</label>
+                @Html.TextBoxFor(x => x.NombreUsuario, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Nombre de Usuario",
+                    @required = "required"
+                })
+            </div>
+
+            <div class="form-group">
+                <label for="Contrasena">Contraseña</label>
+                @Html.PasswordFor(x => x.Contrasena, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Contraseña",
+                    @required = "required"
+                })
+            </div>
+
+            <div class="form-group">
+                <label for="FechaNacimiento">Fecha de Nacimiento</label>
+                @Html.TextBox("FechaNacimiento", null, new
+                {
+                    @class = "form-control",
+                    @type = "date",
+                    @required = "required"
+                })
+            </div>
+
+            <div class="form-group">
+                <label for="TelefonoContacto">Teléfono de Contacto</label>
+                @Html.TextBox("TelefonoContacto", null, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Teléfono de Contacto",
+                    @required = "required"
+                })
+            </div>
+
+            <div class="form-group">
+                <label for="FotoPerfilUrl">Foto de Perfil (opcional)</label>
+                <input type="file" name="FotoPerfilUrl" class="form-control" accept="image/*" />
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-login">Registrarse</button>
+            </div>
+
+            <div class="text-link text-center">
+                <p>¿Ya tienes cuenta? <a href="@Url.Action("Login", "Home")">Inicia Sesión</a></p>
+                <p>¿Olvidaste tu contraseña? <a href="@Url.Action("RecuperarContrasena", "Home")">Recupérala aquí</a></p>
+            </div>
+        }
+    </div>
+</section>
+
