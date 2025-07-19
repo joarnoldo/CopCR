@@ -1,9 +1,11 @@
-USE CopCR_Dev;
+USE CopCR_Pruebas;
 GO
 
+drop PROCEDURE dbo.RegistroUsuario;
+go
 
 CREATE PROCEDURE dbo.RegistroUsuario
-    @CedulaIdentidad   NVARCHAR(20),
+    @CedulaIdentidad   NVARCHAR(100),
     @Nombre            NVARCHAR(100),
     @PrimerApellido    NVARCHAR(100),
     @SegundoApellido   NVARCHAR(100),
@@ -16,10 +18,17 @@ CREATE PROCEDURE dbo.RegistroUsuario
 AS
 BEGIN
     SET NOCOUNT ON;
+    SET XACT_ABORT ON;
+
+    IF EXISTS (SELECT 1 FROM dbo.Usuario WHERE Email = @Email)
+        RETURN -2;
+
+    IF EXISTS (SELECT 1 FROM dbo.Usuario WHERE CedulaIdentidad = @CedulaIdentidad)
+        RETURN -3;
+
     BEGIN TRY
         BEGIN TRAN;
 
-        -- 1) Insertar en Usuario
         INSERT INTO dbo.Usuario
             (CedulaIdentidad, Nombre, PrimerApellido, SegundoApellido,
              Email, NombreUsuario, Contrasena, FechaRegistro, FotoPerfilUrl, Activo)
@@ -27,24 +36,24 @@ BEGIN
             (@CedulaIdentidad, @Nombre, @PrimerApellido, @SegundoApellido,
              @Email, @NombreUsuario, @Contrasena, GETDATE(), @FotoPerfilUrl, 1);
 
-        -- 2) Obtener el ID recién generado
         DECLARE @NewUserID INT = SCOPE_IDENTITY();
 
-        -- 3) Insertar en UsuarioFinal
         INSERT INTO dbo.UsuarioFinal
-            (UsuarioID, FechaNacimiento, TelefonoContacto)
+            (UsuarioID, FechaNacimiento, TelefonoContacto, PuntosConfianza, AceptaNotificacionesPush)
         VALUES
-            (@NewUserID, @FechaNacimiento, @TelefonoContacto);
+            (@NewUserID, @FechaNacimiento, @TelefonoContacto, 0, 1);
 
         COMMIT;
-        RETURN 1;
+        RETURN 0;
     END TRY
     BEGIN CATCH
-        ROLLBACK;
+        IF XACT_STATE() <> 0
+            ROLLBACK;
         RETURN -1;
     END CATCH
 END
 GO
+
 
 
 
@@ -63,6 +72,34 @@ EXEC dbo.RegistroUsuario
 
 
 select * from UsuarioFinal;
+
+DECLARE @rc INT;
+
+EXEC @rc = dbo.RegistroUsuario
+    @CedulaIdentidad   = '12345678',
+    @Nombre            = 'Ricardo',
+    @PrimerApellido    = 'Montaner',
+    @SegundoApellido   = 'Santos',
+    @Email             = 'montaner02@example.com',
+    @NombreUsuario     = 'prueba1',
+    @Contrasena        = '$2a$11$7dHuiwT3IKcg7W4n7ErtqeL2Q52EdfXsTHHUjmMwFGr9sXg8xU',
+    @FechaNacimiento   = '1980-01-01',
+    @TelefonoContacto  = '8888-8888',
+    @FotoPerfilUrl     = NULL;
+
+SELECT @rc AS ReturnCode;
+
+
+
+
+
+
+
+
+
+
+
+
 
 CREATE PROCEDURE dbo.ValidarInicioSesion
     @CedulaIdentidad NVARCHAR(100),
@@ -90,5 +127,4 @@ BEGIN
       AND U.Contrasena = @Contrasena
       AND U.Activo = 1;
 END
-
 

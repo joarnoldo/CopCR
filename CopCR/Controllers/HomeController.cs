@@ -83,10 +83,10 @@ namespace CopCR.Controllers
                     hash,
                     autenticacion.FechaNacimiento,
                     autenticacion.TelefonoContacto,
-                    null // FotoPerfilUrl opcional
+                    null 
                 );
 
-                if (result > 0)
+                if (result == 0)
                     return RedirectToAction("Login", "Home");
             }
 

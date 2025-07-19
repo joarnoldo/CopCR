@@ -7,8 +7,8 @@
       "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\models\\filtroseguridad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\models\\filtroseguridad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\home\\registrousuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\home\\registrousuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|c:\\users\\jloca\\desktop\\universidad\\prograavanzada\\copcr\\copcr\\ef\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
@@ -19,40 +19,32 @@
       "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\shared\\_layoutexterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\shared\\_layoutexterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\services\\utilitarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\services\\utilitarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|c:\\users\\jloca\\desktop\\universidad\\prograavanzada\\copcr\\copcr\\ef\\model1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\ef\\model1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|c:\\users\\jloca\\desktop\\universidad\\prograavanzada\\copcr\\copcr\\ef\\model1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\ef\\model1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\models\\autenticacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\models\\autenticacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|c:\\users\\jloca\\desktop\\universidad\\prograavanzada\\copcr\\copcr\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\shared\\_layoutinterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\shared\\_layoutinterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\home\\registrousuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\home\\registrousuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\models\\autenticacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\models\\autenticacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\models\\filtroseguridad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\models\\filtroseguridad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,37 +54,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 10,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegistroUsuario.cshtml",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Home\\RegistroUsuario.cshtml",
+              "RelativeDocumentMoniker": "CopCR\\Views\\Home\\RegistroUsuario.cshtml",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Home\\RegistroUsuario.cshtml",
+              "RelativeToolTip": "CopCR\\Views\\Home\\RegistroUsuario.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-18T04:49:11.765Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Model1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\EF\\Model1.Designer.cs",
-              "RelativeDocumentMoniker": "CopCR\\EF\\Model1.Designer.cs",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\EF\\Model1.Designer.cs",
-              "RelativeToolTip": "CopCR\\EF\\Model1.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T05:39:01.483Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Model1.Context.cs",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\EF\\Model1.Context.cs",
-              "RelativeDocumentMoniker": "CopCR\\EF\\Model1.Context.cs",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\EF\\Model1.Context.cs",
-              "RelativeToolTip": "CopCR\\EF\\Model1.Context.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T05:35:48.773Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -103,111 +83,33 @@
               "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\EF\\Model1.edmx [Diagram1]",
               "RelativeToolTip": "CopCR\\EF\\Model1.edmx [Diagram1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2025-07-19T05:34:12.904Z",
+              "WhenOpened": "2025-07-19T21:43:55.126Z",
               "EditorCaption": " [Diagram1]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FiltroSeguridad.cs",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\FiltroSeguridad.cs",
-              "RelativeDocumentMoniker": "CopCR\\Models\\FiltroSeguridad.cs",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\FiltroSeguridad.cs",
-              "RelativeToolTip": "CopCR\\Models\\FiltroSeguridad.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T04:40:17.921Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "CopCR\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "CopCR\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T01:55:49.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "RegistroUsuario.cshtml",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Home\\RegistroUsuario.cshtml",
-              "RelativeDocumentMoniker": "CopCR\\Views\\Home\\RegistroUsuario.cshtml",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Home\\RegistroUsuario.cshtml",
-              "RelativeToolTip": "CopCR\\Views\\Home\\RegistroUsuario.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-18T04:49:11.765Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Autenticacion.cs",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\Autenticacion.cs",
-              "RelativeDocumentMoniker": "CopCR\\Models\\Autenticacion.cs",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\Autenticacion.cs",
-              "RelativeToolTip": "CopCR\\Models\\Autenticacion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T04:18:24.656Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "CopCR\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "CopCR\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowBIAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T03:07:56.921Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Web.config",
-              "RelativeDocumentMoniker": "CopCR\\Web.config",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Web.config",
-              "RelativeToolTip": "CopCR\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAYwEcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-07-19T03:32:11.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Utilitarios.cs",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Services\\Utilitarios.cs",
-              "RelativeDocumentMoniker": "CopCR\\Services\\Utilitarios.cs",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Services\\Utilitarios.cs",
-              "RelativeToolTip": "CopCR\\Services\\Utilitarios.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAADgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T03:58:34.027Z",
+              "Title": "_LayoutInterno.cshtml",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Shared\\_LayoutInterno.cshtml",
+              "RelativeDocumentMoniker": "CopCR\\Views\\Shared\\_LayoutInterno.cshtml",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Shared\\_LayoutInterno.cshtml",
+              "RelativeToolTip": "CopCR\\Views\\Shared\\_LayoutInterno.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-19T15:31:03.117Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "CopCR\\Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\Usuario.cs",
-              "RelativeToolTip": "CopCR\\Models\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T03:15:01.638Z",
+              "Title": "_LayoutExterno.cshtml",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Shared\\_LayoutExterno.cshtml",
+              "RelativeDocumentMoniker": "CopCR\\Views\\Shared\\_LayoutExterno.cshtml",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Shared\\_LayoutExterno.cshtml",
+              "RelativeToolTip": "CopCR\\Views\\Shared\\_LayoutExterno.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-19T15:30:51.627Z",
               "EditorCaption": ""
             },
             {
@@ -218,14 +120,75 @@
               "RelativeDocumentMoniker": "CopCR\\Views\\Home\\Login.cshtml",
               "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Home\\Login.cshtml",
               "RelativeToolTip": "CopCR\\Views\\Home\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-03T19:46:17.181Z",
+              "WhenOpened": "2025-07-19T15:30:12.975Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "CopCR\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\Usuario.cs",
+              "RelativeToolTip": "CopCR\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-19T15:30:01.781Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FiltroSeguridad.cs",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\FiltroSeguridad.cs",
+              "RelativeDocumentMoniker": "CopCR\\Models\\FiltroSeguridad.cs",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\FiltroSeguridad.cs",
+              "RelativeToolTip": "CopCR\\Models\\FiltroSeguridad.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-19T15:29:25.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "CopCR\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "CopCR\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-19T01:55:49.223Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Autenticacion.cs",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\Autenticacion.cs",
+              "RelativeDocumentMoniker": "CopCR\\Models\\Autenticacion.cs",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\Autenticacion.cs",
+              "RelativeToolTip": "CopCR\\Models\\Autenticacion.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T04:18:24.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "CopCR\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "CopCR\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowF0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-19T15:26:38.285Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "CopCR\\Views\\Home\\Index.cshtml",
@@ -233,8 +196,7 @@
               "RelativeToolTip": "CopCR\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-30T03:36:11.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T03:36:11.813Z"
             }
           ]
         }
