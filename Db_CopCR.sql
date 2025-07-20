@@ -1,4 +1,4 @@
-CREATE DATABASE CopCR_Pruebas;
+CREATE DATABASE CopCR_Dev;
 GO
 
 USE CopCR_Pruebas;
