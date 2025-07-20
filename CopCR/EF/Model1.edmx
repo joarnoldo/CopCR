@@ -324,7 +324,6 @@
         </Function>
         <Function Name="ValidarInicioSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CedulaIdentidad" Type="nvarchar" Mode="In" />
-          <Parameter Name="Contrasena" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="CopCR_DevModelStoreContainer">
           <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
@@ -816,7 +815,6 @@
           </FunctionImport>
           <FunctionImport Name="ValidarInicioSesion" ReturnType="Collection(CopCR_DevModel.ValidarInicioSesion_Result)">
             <Parameter Name="CedulaIdentidad" Mode="In" Type="String" />
-            <Parameter Name="Contrasena" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ValidarInicioSesion_Result">

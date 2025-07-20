@@ -416,7 +416,6 @@
     </FunctionImport>
     <FunctionImport Name="ValidarInicioSesion" ReturnType="Collection(CopCR_DevModel.ValidarInicioSesion_Result)">
       <Parameter Name="CedulaIdentidad" Mode="In" Type="String" />
-      <Parameter Name="Contrasena" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="ValidarInicioSesion_Result">

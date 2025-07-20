@@ -1,4 +1,4 @@
-USE CopCR_Pruebas;
+USE CopCR_Dev;
 GO
 
 drop PROCEDURE dbo.RegistroUsuario;
@@ -54,9 +54,10 @@ BEGIN
 END
 GO
 
+
+
 CREATE PROCEDURE dbo.ValidarInicioSesion
-    @CedulaIdentidad NVARCHAR(100),
-    @Contrasena NVARCHAR(200)
+    @CedulaIdentidad NVARCHAR(100)
 AS
 BEGIN
     SELECT 
@@ -68,6 +69,7 @@ BEGIN
         U.Email,
         U.NombreUsuario,
         U.FotoPerfilUrl,
+        U.Contrasena, -- <- necesario para compararla con BCrypt
         CASE 
             WHEN A.UsuarioID IS NOT NULL THEN 'ADMIN'
             WHEN UF.UsuarioID IS NOT NULL THEN 'USER'
@@ -77,7 +79,10 @@ BEGIN
     LEFT JOIN Administrador A ON U.UsuarioID = A.UsuarioID
     LEFT JOIN UsuarioFinal UF ON U.UsuarioID = UF.UsuarioID
     WHERE U.CedulaIdentidad = @CedulaIdentidad
-      AND U.Contrasena = @Contrasena
       AND U.Activo = 1;
 END
 
+
+
+
+select * from Usuario;

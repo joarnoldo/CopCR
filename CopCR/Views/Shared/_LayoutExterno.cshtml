@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/myStyle.css?v=3" />
     <link rel="stylesheet" type="text/css" href="~/Content/responsive.css" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Header / Navbar -->
     <header class="header_section">
         <div class="container">
@@ -45,8 +45,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Contacto</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Login", "Home")">Login/Registro</a>
+                        <li class="nav-item ml-lg-2 mt-2 mt-lg-0">
+                            <a class="btn btn-outline-light" href="@Url.Action("Login", "Home")">Login/Registro</a>
                         </li>
                     </ul>
                 </div>

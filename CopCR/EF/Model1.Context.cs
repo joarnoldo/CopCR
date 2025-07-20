@@ -85,17 +85,13 @@ namespace CopCR.EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistroUsuario", cedulaIdentidadParameter, nombreParameter, primerApellidoParameter, segundoApellidoParameter, emailParameter, nombreUsuarioParameter, contrasenaParameter, fechaNacimientoParameter, telefonoContactoParameter, fotoPerfilUrlParameter);
         }
     
-        public virtual ObjectResult<ValidarInicioSesion_Result> ValidarInicioSesion(string cedulaIdentidad, string contrasena)
+        public virtual ObjectResult<ValidarInicioSesion_Result> ValidarInicioSesion(string cedulaIdentidad)
         {
             var cedulaIdentidadParameter = cedulaIdentidad != null ?
                 new ObjectParameter("CedulaIdentidad", cedulaIdentidad) :
                 new ObjectParameter("CedulaIdentidad", typeof(string));
     
-            var contrasenaParameter = contrasena != null ?
-                new ObjectParameter("Contrasena", contrasena) :
-                new ObjectParameter("Contrasena", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarInicioSesion_Result>("ValidarInicioSesion", cedulaIdentidadParameter, contrasenaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarInicioSesion_Result>("ValidarInicioSesion", cedulaIdentidadParameter);
         }
     }
 }

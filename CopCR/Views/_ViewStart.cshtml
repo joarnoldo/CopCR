@@ -1,3 +1,15 @@
-﻿@{
-    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+﻿@using System.Linq
+@{
+    var action = ViewContext.RouteData.Values["action"] as string;
+    var accionesPublicas = new[] { "Login", "RegistroUsuario", "RecuperarContrasena" };
+    var estaLogueado = Session["IdUsuario"] != null;
+
+    if (!estaLogueado || accionesPublicas.Contains(action))
+    {
+        Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutInterno.cshtml";
+    }
 }

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/myStyle.css?v=3" />
     <link rel="stylesheet" type="text/css" href="~/Content/responsive.css" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Header / Navbar -->
     <header class="header_section">
         <div class="container">
@@ -45,8 +45,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Contacto</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Login", "Home")">Login/Registro</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="@(Session["FotoPerfilUrl"] as string ?? Url.Content("~/Content/Images/logo.png"))" class="rounded-circle mr-2" style="width:30px;height:30px;object-fit:cover;" alt="Usuario" />
+                                @Session["NombreUsuario"]
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="@Url.Action("ConsultarPerfilUsuario", "Usuario")">Consultar Perfil</a>
+                                <a class="dropdown-item" href="@Url.Action("CerrarSesion", "Home")">Cerrar sesión</a>
+                            </div>
                         </li>
                     </ul>
                 </div>

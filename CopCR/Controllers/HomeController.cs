@@ -3,6 +3,7 @@ using CopCR.EF;
 using CopCR.Models;
 using CopCR.Services;
 using System;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -27,22 +28,19 @@ namespace CopCR.Controllers
         {
             using (var db = new CopCR_DevEntities())
             {
-                //Buscar usuario activo por cédula
-                var user = db.Usuario
-                             .FirstOrDefault(u =>
-                                 u.CedulaIdentidad == autenticacion.CedulaIdentidad &&
-                                 u.Activo);
+                var result = db.Database.SqlQuery<LoginResult>(
+                    "EXEC dbo.ValidarInicioSesion @CedulaIdentidad",
+                    new SqlParameter("@CedulaIdentidad", autenticacion.CedulaIdentidad)
+                ).FirstOrDefault();
 
-                //Verificar contraseña con BCrypt
-                if (user != null && BCrypt.Net.BCrypt.Verify(autenticacion.Contrasena, user.Contrasena))
+                if (result != null && BCrypt.Net.BCrypt.Verify(autenticacion.Contrasena, result.Contrasena))
                 {
-                    //Guardar datos en sesión
-                    Session["IdUsuario"] = user.UsuarioID;
-                    Session["Nombre"] = $"{user.Nombre} {user.PrimerApellido}";
-                    //Detectar si es admin o usuario final
-                    bool esAdmin = db.Administrador.Any(a => a.UsuarioID == user.UsuarioID);
-                    Session["IdRol"] = esAdmin ? "ADMIN" : "USER";
-                    Session["DescripcionRol"] = esAdmin ? "Administrador" : "UsuarioFinal";
+                    Session["IdUsuario"] = result.UsuarioID;
+                    Session["Nombre"] = $"{result.Nombre} {result.PrimerApellido}";
+                    Session["NombreUsuario"] = result.NombreUsuario;
+                    Session["FotoPerfilUrl"] = result.FotoPerfilUrl;
+                    Session["IdRol"] = result.TipoUsuario;
+                    Session["DescripcionRol"] = result.TipoUsuario == "ADMIN" ? "Administrador" : "UsuarioFinal";
 
                     return RedirectToAction("Index", "Home");
                 }
