@@ -1,9 +1,7 @@
-﻿using BCrypt.Net;
-using CopCR.EF;
+﻿using CopCR.EF;
 using CopCR.Models;
 using CopCR.Services;
 using System;
-using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -84,7 +82,7 @@ namespace CopCR.Controllers
             using (var db = new CopCR_DevEntities())
             {
 
-            var sql = @" DECLARE @ReturnValue INT;
+                var sql = @" DECLARE @ReturnValue INT;
             EXEC @ReturnValue = dbo.RegistroUsuario 
                  @CedulaIdentidad,
                  @Nombre,

@@ -310,6 +310,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ActualizarPerfilUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UsuarioID" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="PrimerApellido" Type="nvarchar" Mode="In" />
+          <Parameter Name="SegundoApellido" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="NombreUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="TelefonoContacto" Type="nvarchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="FotoPerfilUrl" Type="nvarchar" Mode="In" />
+          <Parameter Name="AceptaNotificacionesPush" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="CambiarContrasenaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UsuarioID" Type="int" Mode="In" />
+          <Parameter Name="NuevoHash" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultarPerfilUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UsuarioID" Type="int" Mode="In" />
+        </Function>
         <Function Name="RegistroUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CedulaIdentidad" Type="nvarchar" Mode="In" />
           <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
@@ -814,7 +833,26 @@
             <Parameter Name="FotoPerfilUrl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ValidarInicioSesion" ReturnType="Collection(CopCR_DevModel.ValidarInicioSesion_Result)">
-            <Parameter Name="CedulaIdentidad" Mode="In" Type="String" />
+          <Parameter Name="CedulaIdentidad" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarPerfilUsuario">
+            <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+            <Parameter Name="SegundoApellido" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="NombreUsuario" Mode="In" Type="String" />
+            <Parameter Name="TelefonoContacto" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="FotoPerfilUrl" Mode="In" Type="String" />
+            <Parameter Name="AceptaNotificacionesPush" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarPerfilUsuario" ReturnType="Collection(CopCR_DevModel.ConsultarPerfilUsuario_Result)">
+          <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CambiarContrasenaUsuario">
+            <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+            <Parameter Name="NuevoHash" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ValidarInicioSesion_Result">
@@ -827,6 +865,20 @@
           <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="FotoPerfilUrl" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="TipoUsuario" Nullable="false" MaxLength="7" />
+        </ComplexType>
+        <ComplexType Name="ConsultarPerfilUsuario_Result">
+          <Property Type="String" Name="Identificacion" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="SegundoApellido" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FotoPerfilUrl" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="FechaRegistro" Nullable="false" Precision="23" />
+          <Property Type="String" Name="TelefonoContacto" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" />
+          <Property Type="Int32" Name="PuntosConfianza" Nullable="true" />
+          <Property Type="Boolean" Name="AceptaNotificacionesPush" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -989,6 +1041,26 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ActualizarPerfilUsuario" FunctionName="CopCR_DevModel.Store.ActualizarPerfilUsuario" />
+          <FunctionImportMapping FunctionImportName="ConsultarPerfilUsuario" FunctionName="CopCR_DevModel.Store.ConsultarPerfilUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CopCR_DevModel.ConsultarPerfilUsuario_Result">
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="FotoPerfilUrl" ColumnName="FotoPerfilUrl" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="TelefonoContacto" ColumnName="TelefonoContacto" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="PuntosConfianza" ColumnName="PuntosConfianza" />
+                <ScalarProperty Name="AceptaNotificacionesPush" ColumnName="AceptaNotificacionesPush" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CambiarContrasenaUsuario" FunctionName="CopCR_DevModel.Store.CambiarContrasenaUsuario" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

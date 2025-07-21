@@ -417,6 +417,25 @@
     <FunctionImport Name="ValidarInicioSesion" ReturnType="Collection(CopCR_DevModel.ValidarInicioSesion_Result)">
       <Parameter Name="CedulaIdentidad" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="ActualizarPerfilUsuario">
+      <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+      <Parameter Name="SegundoApellido" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="NombreUsuario" Mode="In" Type="String" />
+      <Parameter Name="TelefonoContacto" Mode="In" Type="String" />
+      <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="FotoPerfilUrl" Mode="In" Type="String" />
+      <Parameter Name="AceptaNotificacionesPush" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarPerfilUsuario" ReturnType="Collection(CopCR_DevModel.ConsultarPerfilUsuario_Result)">
+      <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CambiarContrasenaUsuario">
+      <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+      <Parameter Name="NuevoHash" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="ValidarInicioSesion_Result">
     <Property Type="Int32" Name="UsuarioID" Nullable="false" />
@@ -428,5 +447,19 @@
     <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="FotoPerfilUrl" Nullable="true" MaxLength="500" />
     <Property Type="String" Name="TipoUsuario" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="ConsultarPerfilUsuario_Result">
+    <Property Type="String" Name="Identificacion" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="SegundoApellido" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="FotoPerfilUrl" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="FechaRegistro" Nullable="false" Precision="23" />
+    <Property Type="String" Name="TelefonoContacto" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="true" />
+    <Property Type="Int32" Name="PuntosConfianza" Nullable="true" />
+    <Property Type="Boolean" Name="AceptaNotificacionesPush" Nullable="true" />
   </ComplexType>
 </Schema>

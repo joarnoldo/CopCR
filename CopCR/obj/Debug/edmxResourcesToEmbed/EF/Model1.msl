@@ -156,5 +156,25 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ActualizarPerfilUsuario" FunctionName="CopCR_DevModel.Store.ActualizarPerfilUsuario" />
+    <FunctionImportMapping FunctionImportName="ConsultarPerfilUsuario" FunctionName="CopCR_DevModel.Store.ConsultarPerfilUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CopCR_DevModel.ConsultarPerfilUsuario_Result">
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="FotoPerfilUrl" ColumnName="FotoPerfilUrl" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="TelefonoContacto" ColumnName="TelefonoContacto" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="PuntosConfianza" ColumnName="PuntosConfianza" />
+          <ScalarProperty Name="AceptaNotificacionesPush" ColumnName="AceptaNotificacionesPush" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CambiarContrasenaUsuario" FunctionName="CopCR_DevModel.Store.CambiarContrasenaUsuario" />
   </EntityContainerMapping>
 </Mapping>

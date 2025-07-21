@@ -1,9 +1,6 @@
 CREATE DATABASE CopCR_Dev;
 GO
 
-USE CopCR_Pruebas;
-GO
-
 -- ##########################
 -- 1. Catálogos geográficos
 -- ##########################

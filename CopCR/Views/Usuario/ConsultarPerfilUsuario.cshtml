@@ -1,0 +1,109 @@
+﻿@model CopCR.Models.UsuarioModel
+
+@{
+    ViewBag.Title = "Perfil de Usuario";
+}
+
+<div class="card">
+
+    @using (Html.BeginForm("ActualizarPerfilUsuario", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal m-t-20" }))
+    {
+        <div class="card-body">
+            <h4 class="card-title">Perfil de Usuario</h4>
+            <hr /><br />
+
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+
+                    @if (!string.IsNullOrEmpty(ViewBag.Mensaje))
+                    {
+                        <div class="alert alert-warning text-center">
+                            @ViewBag.Mensaje
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        <label>Cédula:</label>
+                        @Html.TextBoxFor(x => x.Identificacion, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Primer Apellido:</label>
+                        @Html.TextBoxFor(x => x.PrimerApellido, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Segundo Apellido:</label>
+                        @Html.TextBoxFor(x => x.SegundoApellido, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Correo:</label>
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @type = "email" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nombre de Usuario:</label>
+                        @Html.TextBoxFor(x => x.NombreUsuario, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Teléfono de contacto:</label>
+                        @Html.TextBoxFor(x => x.TelefonoContacto, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha de nacimiento:</label>
+                        @Html.TextBoxFor( x => x.FechaNacimiento,"{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Puntos de confianza:</label>
+                        @Html.TextBoxFor(x => x.PuntosConfianza, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha de registro:</label>
+                        @Html.TextBoxFor(x => x.FechaRegistro, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Foto de perfil:</label><br />
+                        <input type="file" name="foto" class="form-control-file" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contraseña nueva:</label>
+                        @Html.PasswordFor(x => x.Contrasena, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirmar contraseña:</label>
+                        @Html.Password("ConfirmarContrasenna", null, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group form-check">
+                        <label>
+                            @Html.CheckBoxFor(x => x.AceptaNotificacionesPush, new { @class = "form-check-input", @checked = "checked" })
+                            Acepta recibir notificaciones push
+                        </label>
+                    </div>
+
+
+
+                    <div class="text-right">
+                        <button class="btn btn-info" type="submit">Guardar Cambios</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+

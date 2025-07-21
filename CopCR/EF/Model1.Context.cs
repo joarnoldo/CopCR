@@ -93,5 +93,72 @@ namespace CopCR.EF
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarInicioSesion_Result>("ValidarInicioSesion", cedulaIdentidadParameter);
         }
+    
+        public virtual int ActualizarPerfilUsuario(Nullable<int> usuarioID, string nombre, string primerApellido, string segundoApellido, string email, string nombreUsuario, string telefonoContacto, Nullable<System.DateTime> fechaNacimiento, string fotoPerfilUrl, Nullable<bool> aceptaNotificacionesPush)
+        {
+            var usuarioIDParameter = usuarioID.HasValue ?
+                new ObjectParameter("UsuarioID", usuarioID) :
+                new ObjectParameter("UsuarioID", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var primerApellidoParameter = primerApellido != null ?
+                new ObjectParameter("PrimerApellido", primerApellido) :
+                new ObjectParameter("PrimerApellido", typeof(string));
+    
+            var segundoApellidoParameter = segundoApellido != null ?
+                new ObjectParameter("SegundoApellido", segundoApellido) :
+                new ObjectParameter("SegundoApellido", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var nombreUsuarioParameter = nombreUsuario != null ?
+                new ObjectParameter("NombreUsuario", nombreUsuario) :
+                new ObjectParameter("NombreUsuario", typeof(string));
+    
+            var telefonoContactoParameter = telefonoContacto != null ?
+                new ObjectParameter("TelefonoContacto", telefonoContacto) :
+                new ObjectParameter("TelefonoContacto", typeof(string));
+    
+            var fechaNacimientoParameter = fechaNacimiento.HasValue ?
+                new ObjectParameter("FechaNacimiento", fechaNacimiento) :
+                new ObjectParameter("FechaNacimiento", typeof(System.DateTime));
+    
+            var fotoPerfilUrlParameter = fotoPerfilUrl != null ?
+                new ObjectParameter("FotoPerfilUrl", fotoPerfilUrl) :
+                new ObjectParameter("FotoPerfilUrl", typeof(string));
+    
+            var aceptaNotificacionesPushParameter = aceptaNotificacionesPush.HasValue ?
+                new ObjectParameter("AceptaNotificacionesPush", aceptaNotificacionesPush) :
+                new ObjectParameter("AceptaNotificacionesPush", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarPerfilUsuario", usuarioIDParameter, nombreParameter, primerApellidoParameter, segundoApellidoParameter, emailParameter, nombreUsuarioParameter, telefonoContactoParameter, fechaNacimientoParameter, fotoPerfilUrlParameter, aceptaNotificacionesPushParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarPerfilUsuario_Result> ConsultarPerfilUsuario(Nullable<int> usuarioID)
+        {
+            var usuarioIDParameter = usuarioID.HasValue ?
+                new ObjectParameter("UsuarioID", usuarioID) :
+                new ObjectParameter("UsuarioID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarPerfilUsuario_Result>("ConsultarPerfilUsuario", usuarioIDParameter);
+        }
+    
+        public virtual int CambiarContrasenaUsuario(Nullable<int> usuarioID, string nuevoHash)
+        {
+            var usuarioIDParameter = usuarioID.HasValue ?
+                new ObjectParameter("UsuarioID", usuarioID) :
+                new ObjectParameter("UsuarioID", typeof(int));
+    
+            var nuevoHashParameter = nuevoHash != null ?
+                new ObjectParameter("NuevoHash", nuevoHash) :
+                new ObjectParameter("NuevoHash", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CambiarContrasenaUsuario", usuarioIDParameter, nuevoHashParameter);
+        }
     }
 }

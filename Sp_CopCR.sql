@@ -69,7 +69,7 @@ BEGIN
         U.Email,
         U.NombreUsuario,
         U.FotoPerfilUrl,
-        U.Contrasena, -- <- necesario para compararla con BCrypt
+        U.Contrasena,
         CASE 
             WHEN A.UsuarioID IS NOT NULL THEN 'ADMIN'
             WHEN UF.UsuarioID IS NOT NULL THEN 'USER'
@@ -83,6 +83,73 @@ BEGIN
 END
 
 
+CREATE PROCEDURE dbo.ConsultarPerfilUsuario
+    @UsuarioID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
 
+    SELECT 
+        U.CedulaIdentidad AS Identificacion,
+        U.Nombre,
+        U.PrimerApellido,
+        U.SegundoApellido,
+        U.Email,
+        U.NombreUsuario,
+        U.FotoPerfilUrl,
+        U.FechaRegistro,
+        UF.TelefonoContacto,
+        UF.FechaNacimiento,
+        UF.PuntosConfianza,
+        UF.AceptaNotificacionesPush
+    FROM Usuario U
+    LEFT JOIN UsuarioFinal UF ON U.UsuarioID = UF.UsuarioID
+    WHERE U.UsuarioID = @UsuarioID;
+END;
+GO
+
+ALTER PROCEDURE dbo.ActualizarPerfilUsuario
+    @UsuarioID                INT,
+    @Nombre                   NVARCHAR(100),
+    @PrimerApellido           NVARCHAR(100),
+    @SegundoApellido          NVARCHAR(100),
+    @Email                    NVARCHAR(200),
+    @NombreUsuario            NVARCHAR(100),
+    @TelefonoContacto         NVARCHAR(20),
+    @FechaNacimiento          DATE,
+    @FotoPerfilUrl            NVARCHAR(500),
+    @AceptaNotificacionesPush BIT
+AS
+BEGIN
+    SET XACT_ABORT ON;
+
+    BEGIN TRY
+        BEGIN TRAN;
+        UPDATE dbo.Usuario
+        SET
+            Nombre         = @Nombre,
+            PrimerApellido = @PrimerApellido,
+            SegundoApellido= @SegundoApellido,
+            Email          = @Email,
+            NombreUsuario  = @NombreUsuario,
+            FotoPerfilUrl  = @FotoPerfilUrl
+        WHERE UsuarioID = @UsuarioID;
+        UPDATE dbo.UsuarioFinal
+        SET
+            TelefonoContacto        = @TelefonoContacto,
+            FechaNacimiento         = @FechaNacimiento,
+            AceptaNotificacionesPush= @AceptaNotificacionesPush
+        WHERE UsuarioID = @UsuarioID;
+
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        IF XACT_STATE() <> 0
+            ROLLBACK;
+        THROW;
+    END CATCH
+END;
+GO
+    
 
 select * from Usuario;
