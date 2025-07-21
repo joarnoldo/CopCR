@@ -1,0 +1,57 @@
+﻿@model CopCR.Models.UsuarioModel
+
+@{
+    ViewBag.Title = "Cambiar Contraseña";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mb-5">
+                @using (Html.BeginForm("CambiarContrasena", "Usuario", FormMethod.Post, new { @class = "form-horizontal m-t-20" }))
+                {
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Cambiar Contraseña</h4>
+                        <hr />
+
+                        @if (!string.IsNullOrEmpty(ViewBag.Mensaje as string))
+                        {
+                            <div class="alert alert-warning text-center">
+                                @ViewBag.Mensaje
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <label for="Contrasena">Contraseña actual</label>
+                            @Html.PasswordFor(m => m.Contrasena, new
+                            {
+                                @class = "form-control",
+                                @id = "Contrasena",
+                                placeholder = "Ingresa tu contraseña actual",
+                                required = "required"
+                            })
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ContrasenaNueva">Contraseña nueva</label>
+                            @Html.PasswordFor(m => m.ContrasenaNueva, new
+                            {
+                                @class = "form-control",
+                                @id = "ContrasenaNueva",
+                                placeholder = "Ingresa la nueva contraseña",
+                                required = "required"
+                            })
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-info">Actualizar Contraseña</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

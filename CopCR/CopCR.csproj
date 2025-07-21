@@ -271,6 +271,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\RecuperarContrasena.cshtml" />
     <Content Include="Views\Usuario\ConsultarPerfilUsuario.cshtml" />
+    <Content Include="Views\Usuario\CambiarContrasena.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

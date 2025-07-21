@@ -1,12 +1,11 @@
-﻿using System;
-using System.Data;
+﻿using CopCR.EF;
+using CopCR.Models;
+using CopCR.Services;
+using System;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CopCR.EF;
-using CopCR.Models;
-using CopCR.Services;
 
 namespace CopCR.Controllers
 {
@@ -102,8 +101,15 @@ namespace CopCR.Controllers
 
         #region Cambiar Contraseña
 
+        [HttpGet]
+        public ActionResult CambiarContrasena()
+        {
+            return View();
+        }
+
+
         [HttpPost]
-        public ActionResult CambiarContrasenna(UsuarioModel usuario)
+        public ActionResult CambiarContrasena(UsuarioModel usuario)
         {
             int idUsuario = int.Parse(Session["IdUsuario"].ToString());
             ViewBag.Mensaje = "No se pudo actualizar la contraseña";
