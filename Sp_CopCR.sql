@@ -1,20 +1,17 @@
 USE CopCR_Dev;
 GO
 
-drop PROCEDURE dbo.RegistroUsuario;
-go
-
 CREATE PROCEDURE dbo.RegistroUsuario
-    @CedulaIdentidad   NVARCHAR(100),
-    @Nombre            NVARCHAR(100),
-    @PrimerApellido    NVARCHAR(100),
-    @SegundoApellido   NVARCHAR(100),
-    @Email             NVARCHAR(200),
-    @NombreUsuario     NVARCHAR(100),
-    @Contrasena        NVARCHAR(200),
-    @FechaNacimiento   DATE,
-    @TelefonoContacto  NVARCHAR(20),
-    @FotoPerfilUrl     NVARCHAR(500) = NULL
+    @CedulaIdentidad NVARCHAR(100),
+    @Nombre NVARCHAR(100),
+    @PrimerApellido NVARCHAR(100),
+    @SegundoApellido NVARCHAR(100),
+    @Email NVARCHAR(200),
+    @NombreUsuario NVARCHAR(100),
+    @Contrasena NVARCHAR(200),
+    @FechaNacimiento DATE,
+    @TelefonoContacto NVARCHAR(20),
+    @FotoPerfilUrl NVARCHAR(500) = NULL
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -108,16 +105,16 @@ BEGIN
 END;
 GO
 
-ALTER PROCEDURE dbo.ActualizarPerfilUsuario
-    @UsuarioID                INT,
-    @Nombre                   NVARCHAR(100),
-    @PrimerApellido           NVARCHAR(100),
-    @SegundoApellido          NVARCHAR(100),
-    @Email                    NVARCHAR(200),
-    @NombreUsuario            NVARCHAR(100),
-    @TelefonoContacto         NVARCHAR(20),
-    @FechaNacimiento          DATE,
-    @FotoPerfilUrl            NVARCHAR(500),
+CREATE PROCEDURE dbo.ActualizarPerfilUsuario
+    @UsuarioID INT,
+    @Nombre NVARCHAR(100),
+    @PrimerApellido NVARCHAR(100),
+    @SegundoApellido NVARCHAR(100),
+    @Email NVARCHAR(200),
+    @NombreUsuario NVARCHAR(100),
+    @TelefonoContacto NVARCHAR(20),
+    @FechaNacimiento DATE,
+    @FotoPerfilUrl NVARCHAR(500),
     @AceptaNotificacionesPush BIT
 AS
 BEGIN
@@ -127,18 +124,18 @@ BEGIN
         BEGIN TRAN;
         UPDATE dbo.Usuario
         SET
-            Nombre         = @Nombre,
+            Nombre = @Nombre,
             PrimerApellido = @PrimerApellido,
-            SegundoApellido= @SegundoApellido,
-            Email          = @Email,
-            NombreUsuario  = @NombreUsuario,
-            FotoPerfilUrl  = @FotoPerfilUrl
+            SegundoApellido = @SegundoApellido,
+            Email = @Email,
+            NombreUsuario = @NombreUsuario,
+            FotoPerfilUrl = @FotoPerfilUrl
         WHERE UsuarioID = @UsuarioID;
         UPDATE dbo.UsuarioFinal
         SET
-            TelefonoContacto        = @TelefonoContacto,
-            FechaNacimiento         = @FechaNacimiento,
-            AceptaNotificacionesPush= @AceptaNotificacionesPush
+            TelefonoContacto = @TelefonoContacto,
+            FechaNacimiento = @FechaNacimiento,
+            AceptaNotificacionesPush = @AceptaNotificacionesPush
         WHERE UsuarioID = @UsuarioID;
 
         COMMIT;
@@ -150,6 +147,20 @@ BEGIN
     END CATCH
 END;
 GO
-    
+
+CREATE PROCEDURE dbo.CambiarContrasenaUsuario
+    @UsuarioID INT,
+    @NuevoHash NVARCHAR(200)
+AS
+BEGIN
+    SET XACT_ABORT ON;
+    BEGIN TRAN;
+        UPDATE dbo.Usuario
+        SET Contrasena = @NuevoHash
+        WHERE UsuarioID = @UsuarioID;
+    COMMIT;
+END;
+GO
+
 
 select * from Usuario;

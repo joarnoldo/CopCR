@@ -30,7 +30,7 @@ namespace CopCR.EF
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
         public System.DateTime FechaReporte { get; set; }
-        public byte Estado { get; set; }
+        public byte EstadoId { get; set; }
         public byte CategoriaIncidenteID { get; set; }
         public Nullable<int> AdministradorID { get; set; }
         public Nullable<System.DateTime> FechaResolucion { get; set; }
@@ -38,6 +38,7 @@ namespace CopCR.EF
         public virtual Administrador Administrador { get; set; }
         public virtual CategoriaIncidente CategoriaIncidente { get; set; }
         public virtual Direccion Direccion { get; set; }
+        public virtual Estado Estado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IncidenteAdjunto> IncidenteAdjunto { get; set; }
         public virtual UsuarioFinal UsuarioFinal { get; set; }

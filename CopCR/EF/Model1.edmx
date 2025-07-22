@@ -4,21 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CopCR_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CopCR_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrador">
           <Key>
             <PropertyRef Name="UsuarioID" />
           </Key>
           <Property Name="UsuarioID" Type="int" Nullable="false" />
           <Property Name="TelefonoInterno" Type="nvarchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="Canton">
-          <Key>
-            <PropertyRef Name="CantonID" />
-          </Key>
-          <Property Name="CantonID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProvinciaID" Type="tinyint" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CategoriaIncidente">
           <Key>
@@ -34,21 +26,20 @@
           </Key>
           <Property Name="DireccionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UsuarioID" Type="int" Nullable="false" />
-          <Property Name="DistritoID" Type="smallint" Nullable="false" />
-          <Property Name="Barrio" Type="nvarchar" MaxLength="100" />
-          <Property Name="Linea" Type="nvarchar" MaxLength="200" />
-          <Property Name="CodigoPostal" Type="char" MaxLength="5" />
-          <Property Name="Latitud" Type="decimal" Precision="9" Scale="6" />
-          <Property Name="Longitud" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+          <Property Name="TextoLibre" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitud" Type="decimal" Precision="9" Scale="6" Nullable="false" />
+          <Property Name="Longitud" Type="decimal" Precision="9" Scale="6" Nullable="false" />
           <Property Name="GeoLocation" Type="geography" StoreGeneratedPattern="Computed" />
+          <Property Name="IsDomicilioPrincipal" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="Distrito">
+        <EntityType Name="Estado">
           <Key>
-            <PropertyRef Name="DistritoID" />
+            <PropertyRef Name="EstadoId" />
           </Key>
-          <Property Name="DistritoID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CantonID" Type="smallint" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EstadoId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEstado" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Incidente">
           <Key>
@@ -63,7 +54,7 @@
           <Property Name="Titulo" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
           <Property Name="FechaReporte" Type="datetime" Nullable="false" />
-          <Property Name="Estado" Type="tinyint" Nullable="false" />
+          <Property Name="EstadoId" Type="tinyint" Nullable="false" />
           <Property Name="CategoriaIncidenteID" Type="tinyint" Nullable="false" />
           <Property Name="AdministradorID" Type="int" />
           <Property Name="FechaResolucion" Type="datetime" />
@@ -88,13 +79,6 @@
           <Property Name="Mensaje" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="IsLeido" Type="bit" Nullable="false" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Provincia">
-          <Key>
-            <PropertyRef Name="ProvinciaID" />
-          </Key>
-          <Property Name="ProvinciaID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -172,30 +156,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Canton_Provincia">
-          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
-          <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Provincia">
-              <PropertyRef Name="ProvinciaID" />
-            </Principal>
-            <Dependent Role="Canton">
-              <PropertyRef Name="ProvinciaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Direccion_Distrito">
-          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
-          <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Distrito">
-              <PropertyRef Name="DistritoID" />
-            </Principal>
-            <Dependent Role="Direccion">
-              <PropertyRef Name="DistritoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Direccion_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -207,18 +167,6 @@
             </Principal>
             <Dependent Role="Direccion">
               <PropertyRef Name="UsuarioID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Distrito_Canton">
-          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
-          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Canton">
-              <PropertyRef Name="CantonID" />
-            </Principal>
-            <Dependent Role="Distrito">
-              <PropertyRef Name="CantonID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -255,6 +203,18 @@
             </Principal>
             <Dependent Role="Incidente">
               <PropertyRef Name="DireccionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidente_Estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Incidente" Type="Self.Incidente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstadoId" />
+            </Principal>
+            <Dependent Role="Incidente">
+              <PropertyRef Name="EstadoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -346,14 +306,12 @@
         </Function>
         <EntityContainer Name="CopCR_DevModelStoreContainer">
           <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoriaIncidente" EntityType="Self.CategoriaIncidente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Incidente" EntityType="Self.Incidente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IncidenteAdjunto" EntityType="Self.IncidenteAdjunto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notificacion" EntityType="Self.Notificacion" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsuarioFinal" EntityType="Self.UsuarioFinal" Schema="dbo" store:Type="Tables" />
@@ -369,21 +327,9 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Administrador" EntitySet="Administrador" />
           </AssociationSet>
-          <AssociationSet Name="FK_Canton_Provincia" Association="Self.FK_Canton_Provincia">
-            <End Role="Provincia" EntitySet="Provincia" />
-            <End Role="Canton" EntitySet="Canton" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Direccion_Distrito" Association="Self.FK_Direccion_Distrito">
-            <End Role="Distrito" EntitySet="Distrito" />
-            <End Role="Direccion" EntitySet="Direccion" />
-          </AssociationSet>
           <AssociationSet Name="FK_Direccion_Usuario" Association="Self.FK_Direccion_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Direccion" EntitySet="Direccion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Distrito_Canton" Association="Self.FK_Distrito_Canton">
-            <End Role="Canton" EntitySet="Canton" />
-            <End Role="Distrito" EntitySet="Distrito" />
           </AssociationSet>
           <AssociationSet Name="FK_Incidente_Administrador" Association="Self.FK_Incidente_Administrador">
             <End Role="Administrador" EntitySet="Administrador" />
@@ -395,6 +341,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Incidente_Direccion" Association="Self.FK_Incidente_Direccion">
             <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="Incidente" EntitySet="Incidente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidente_Estado" Association="Self.FK_Incidente_Estado">
+            <End Role="Estado" EntitySet="Estado" />
             <End Role="Incidente" EntitySet="Incidente" />
           </AssociationSet>
           <AssociationSet Name="FK_Incidente_UsuarioFinal" Association="Self.FK_Incidente_UsuarioFinal">
@@ -414,7 +364,8 @@
             <End Role="UsuarioFinal" EntitySet="UsuarioFinal" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CopCR_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -426,16 +377,6 @@
           <Property Name="TelefonoInterno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Admin_Usuario" FromRole="Administrador" ToRole="Usuario" />
           <NavigationProperty Name="Incidente" Relationship="Self.FK_Incidente_Administrador" FromRole="Administrador" ToRole="Incidente" />
-        </EntityType>
-        <EntityType Name="Canton">
-          <Key>
-            <PropertyRef Name="CantonID" />
-          </Key>
-          <Property Name="CantonID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProvinciaID" Type="Byte" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Provincia" Relationship="Self.FK_Canton_Provincia" FromRole="Canton" ToRole="Provincia" />
-          <NavigationProperty Name="Distrito" Relationship="Self.FK_Distrito_Canton" FromRole="Canton" ToRole="Distrito" />
         </EntityType>
         <EntityType Name="CategoriaIncidente">
           <Key>
@@ -452,26 +393,23 @@
           </Key>
           <Property Name="DireccionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsuarioID" Type="Int32" Nullable="false" />
-          <Property Name="DistritoID" Type="Int16" Nullable="false" />
-          <Property Name="Barrio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Linea" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CodigoPostal" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="Latitud" Type="Decimal" Precision="9" Scale="6" />
-          <Property Name="Longitud" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TextoLibre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Latitud" Type="Decimal" Precision="9" Scale="6" Nullable="false" />
+          <Property Name="Longitud" Type="Decimal" Precision="9" Scale="6" Nullable="false" />
           <Property Name="GeoLocation" Type="Geography" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Distrito" Relationship="Self.FK_Direccion_Distrito" FromRole="Direccion" ToRole="Distrito" />
+          <Property Name="IsDomicilioPrincipal" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Direccion_Usuario" FromRole="Direccion" ToRole="Usuario" />
           <NavigationProperty Name="Incidente" Relationship="Self.FK_Incidente_Direccion" FromRole="Direccion" ToRole="Incidente" />
         </EntityType>
-        <EntityType Name="Distrito">
+        <EntityType Name="Estado">
           <Key>
-            <PropertyRef Name="DistritoID" />
+            <PropertyRef Name="EstadoId" />
           </Key>
-          <Property Name="DistritoID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CantonID" Type="Int16" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Canton" Relationship="Self.FK_Distrito_Canton" FromRole="Distrito" ToRole="Canton" />
-          <NavigationProperty Name="Direccion" Relationship="Self.FK_Direccion_Distrito" FromRole="Distrito" ToRole="Direccion" />
+          <Property Name="EstadoId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEstado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Incidente" Relationship="Self.FK_Incidente_Estado" FromRole="Estado" ToRole="Incidente" />
         </EntityType>
         <EntityType Name="Incidente">
           <Key>
@@ -486,13 +424,14 @@
           <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FechaReporte" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Estado" Type="Byte" Nullable="false" />
+          <Property Name="EstadoId" Type="Byte" Nullable="false" />
           <Property Name="CategoriaIncidenteID" Type="Byte" Nullable="false" />
           <Property Name="AdministradorID" Type="Int32" />
           <Property Name="FechaResolucion" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Administrador" Relationship="Self.FK_Incidente_Administrador" FromRole="Incidente" ToRole="Administrador" />
           <NavigationProperty Name="CategoriaIncidente" Relationship="Self.FK_Incidente_Categoria" FromRole="Incidente" ToRole="CategoriaIncidente" />
           <NavigationProperty Name="Direccion" Relationship="Self.FK_Incidente_Direccion" FromRole="Incidente" ToRole="Direccion" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_Incidente_Estado" FromRole="Incidente" ToRole="Estado" />
           <NavigationProperty Name="IncidenteAdjunto" Relationship="Self.FK_Adjunto_Incidente" FromRole="Incidente" ToRole="IncidenteAdjunto" />
           <NavigationProperty Name="UsuarioFinal" Relationship="Self.FK_Incidente_UsuarioFinal" FromRole="Incidente" ToRole="UsuarioFinal" />
           <NavigationProperty Name="Notificacion" Relationship="Self.FK_Notificacion_Incidente" FromRole="Incidente" ToRole="Notificacion" />
@@ -521,14 +460,6 @@
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Incidente" Relationship="Self.FK_Notificacion_Incidente" FromRole="Notificacion" ToRole="Incidente" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Notificacion_Usuario" FromRole="Notificacion" ToRole="Usuario" />
-        </EntityType>
-        <EntityType Name="Provincia">
-          <Key>
-            <PropertyRef Name="ProvinciaID" />
-          </Key>
-          <Property Name="ProvinciaID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Canton" Relationship="Self.FK_Canton_Provincia" FromRole="Provincia" ToRole="Canton" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -599,30 +530,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Canton_Provincia">
-          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
-          <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Provincia">
-              <PropertyRef Name="ProvinciaID" />
-            </Principal>
-            <Dependent Role="Canton">
-              <PropertyRef Name="ProvinciaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Distrito_Canton">
-          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
-          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Canton">
-              <PropertyRef Name="CantonID" />
-            </Principal>
-            <Dependent Role="Distrito">
-              <PropertyRef Name="CantonID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Incidente_Categoria">
           <End Role="CategoriaIncidente" Type="Self.CategoriaIncidente" Multiplicity="1" />
           <End Role="Incidente" Type="Self.Incidente" Multiplicity="*" />
@@ -632,18 +539,6 @@
             </Principal>
             <Dependent Role="Incidente">
               <PropertyRef Name="CategoriaIncidenteID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Direccion_Distrito">
-          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
-          <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Distrito">
-              <PropertyRef Name="DistritoID" />
-            </Principal>
-            <Dependent Role="Direccion">
-              <PropertyRef Name="DistritoID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -670,6 +565,18 @@
             </Principal>
             <Dependent Role="Incidente">
               <PropertyRef Name="DireccionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidente_Estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Incidente" Type="Self.Incidente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstadoId" />
+            </Principal>
+            <Dependent Role="Incidente">
+              <PropertyRef Name="EstadoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -753,14 +660,12 @@
         </Association>
         <EntityContainer Name="CopCR_DevEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Administrador" EntityType="Self.Administrador" />
-          <EntitySet Name="Canton" EntityType="Self.Canton" />
           <EntitySet Name="CategoriaIncidente" EntityType="Self.CategoriaIncidente" />
           <EntitySet Name="Direccion" EntityType="Self.Direccion" />
-          <EntitySet Name="Distrito" EntityType="Self.Distrito" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
           <EntitySet Name="Incidente" EntityType="Self.Incidente" />
           <EntitySet Name="IncidenteAdjunto" EntityType="Self.IncidenteAdjunto" />
           <EntitySet Name="Notificacion" EntityType="Self.Notificacion" />
-          <EntitySet Name="Provincia" EntityType="Self.Provincia" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <EntitySet Name="UsuarioFinal" EntityType="Self.UsuarioFinal" />
@@ -772,21 +677,9 @@
             <End Role="Administrador" EntitySet="Administrador" />
             <End Role="Incidente" EntitySet="Incidente" />
           </AssociationSet>
-          <AssociationSet Name="FK_Canton_Provincia" Association="Self.FK_Canton_Provincia">
-            <End Role="Provincia" EntitySet="Provincia" />
-            <End Role="Canton" EntitySet="Canton" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Distrito_Canton" Association="Self.FK_Distrito_Canton">
-            <End Role="Canton" EntitySet="Canton" />
-            <End Role="Distrito" EntitySet="Distrito" />
-          </AssociationSet>
           <AssociationSet Name="FK_Incidente_Categoria" Association="Self.FK_Incidente_Categoria">
             <End Role="CategoriaIncidente" EntitySet="CategoriaIncidente" />
             <End Role="Incidente" EntitySet="Incidente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Direccion_Distrito" Association="Self.FK_Direccion_Distrito">
-            <End Role="Distrito" EntitySet="Distrito" />
-            <End Role="Direccion" EntitySet="Direccion" />
           </AssociationSet>
           <AssociationSet Name="FK_Direccion_Usuario" Association="Self.FK_Direccion_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
@@ -794,6 +687,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Incidente_Direccion" Association="Self.FK_Incidente_Direccion">
             <End Role="Direccion" EntitySet="Direccion" />
+            <End Role="Incidente" EntitySet="Incidente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidente_Estado" Association="Self.FK_Incidente_Estado">
+            <End Role="Estado" EntitySet="Estado" />
             <End Role="Incidente" EntitySet="Incidente" />
           </AssociationSet>
           <AssociationSet Name="FK_Adjunto_Incidente" Association="Self.FK_Adjunto_Incidente">
@@ -820,6 +717,25 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="UsuarioFinal" EntitySet="UsuarioFinal" />
           </AssociationSet>
+          <FunctionImport Name="ActualizarPerfilUsuario">
+            <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="PrimerApellido" Mode="In" Type="String" />
+            <Parameter Name="SegundoApellido" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="NombreUsuario" Mode="In" Type="String" />
+            <Parameter Name="TelefonoContacto" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="FotoPerfilUrl" Mode="In" Type="String" />
+            <Parameter Name="AceptaNotificacionesPush" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="CambiarContrasenaUsuario">
+            <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+            <Parameter Name="NuevoHash" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarPerfilUsuario" ReturnType="Collection(CopCR_DevModel.ConsultarPerfilUsuario_Result)">
+            <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="RegistroUsuario">
             <Parameter Name="CedulaIdentidad" Mode="In" Type="String" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -833,39 +749,9 @@
             <Parameter Name="FotoPerfilUrl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ValidarInicioSesion" ReturnType="Collection(CopCR_DevModel.ValidarInicioSesion_Result)">
-          <Parameter Name="CedulaIdentidad" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="ActualizarPerfilUsuario">
-            <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-            <Parameter Name="PrimerApellido" Mode="In" Type="String" />
-            <Parameter Name="SegundoApellido" Mode="In" Type="String" />
-            <Parameter Name="Email" Mode="In" Type="String" />
-            <Parameter Name="NombreUsuario" Mode="In" Type="String" />
-            <Parameter Name="TelefonoContacto" Mode="In" Type="String" />
-            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
-            <Parameter Name="FotoPerfilUrl" Mode="In" Type="String" />
-            <Parameter Name="AceptaNotificacionesPush" Mode="In" Type="Boolean" />
-          </FunctionImport>
-          <FunctionImport Name="ConsultarPerfilUsuario" ReturnType="Collection(CopCR_DevModel.ConsultarPerfilUsuario_Result)">
-          <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="CambiarContrasenaUsuario">
-            <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
-            <Parameter Name="NuevoHash" Mode="In" Type="String" />
+            <Parameter Name="CedulaIdentidad" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="ValidarInicioSesion_Result">
-          <Property Type="Int32" Name="UsuarioID" Nullable="false" />
-          <Property Type="String" Name="CedulaIdentidad" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="SegundoApellido" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="FotoPerfilUrl" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="TipoUsuario" Nullable="false" MaxLength="7" />
-        </ComplexType>
         <ComplexType Name="ConsultarPerfilUsuario_Result">
           <Property Type="String" Name="Identificacion" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
@@ -880,6 +766,18 @@
           <Property Type="Int32" Name="PuntosConfianza" Nullable="true" />
           <Property Type="Boolean" Name="AceptaNotificacionesPush" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="ValidarInicioSesion_Result">
+          <Property Type="Int32" Name="UsuarioID" Nullable="false" />
+          <Property Type="String" Name="CedulaIdentidad" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="SegundoApellido" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FotoPerfilUrl" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Contrasena" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="TipoUsuario" Nullable="false" MaxLength="7" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -891,15 +789,6 @@
               <MappingFragment StoreEntitySet="Administrador">
                 <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
                 <ScalarProperty Name="TelefonoInterno" ColumnName="TelefonoInterno" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Canton">
-            <EntityTypeMapping TypeName="CopCR_DevModel.Canton">
-              <MappingFragment StoreEntitySet="Canton">
-                <ScalarProperty Name="CantonID" ColumnName="CantonID" />
-                <ScalarProperty Name="ProvinciaID" ColumnName="ProvinciaID" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -917,22 +806,21 @@
               <MappingFragment StoreEntitySet="Direccion">
                 <ScalarProperty Name="DireccionID" ColumnName="DireccionID" />
                 <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
-                <ScalarProperty Name="DistritoID" ColumnName="DistritoID" />
-                <ScalarProperty Name="Barrio" ColumnName="Barrio" />
-                <ScalarProperty Name="Linea" ColumnName="Linea" />
-                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="TextoLibre" ColumnName="TextoLibre" />
                 <ScalarProperty Name="Latitud" ColumnName="Latitud" />
                 <ScalarProperty Name="Longitud" ColumnName="Longitud" />
                 <ScalarProperty Name="GeoLocation" ColumnName="GeoLocation" />
+                <ScalarProperty Name="IsDomicilioPrincipal" ColumnName="IsDomicilioPrincipal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Distrito">
-            <EntityTypeMapping TypeName="CopCR_DevModel.Distrito">
-              <MappingFragment StoreEntitySet="Distrito">
-                <ScalarProperty Name="DistritoID" ColumnName="DistritoID" />
-                <ScalarProperty Name="CantonID" ColumnName="CantonID" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="CopCR_DevModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+                <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -948,7 +836,7 @@
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="FechaReporte" ColumnName="FechaReporte" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
                 <ScalarProperty Name="CategoriaIncidenteID" ColumnName="CategoriaIncidenteID" />
                 <ScalarProperty Name="AdministradorID" ColumnName="AdministradorID" />
                 <ScalarProperty Name="FechaResolucion" ColumnName="FechaResolucion" />
@@ -975,14 +863,6 @@
                 <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
                 <ScalarProperty Name="IsLeido" ColumnName="IsLeido" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Provincia">
-            <EntityTypeMapping TypeName="CopCR_DevModel.Provincia">
-              <MappingFragment StoreEntitySet="Provincia">
-                <ScalarProperty Name="ProvinciaID" ColumnName="ProvinciaID" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1025,23 +905,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="RegistroUsuario" FunctionName="CopCR_DevModel.Store.RegistroUsuario" />
-          <FunctionImportMapping FunctionImportName="ValidarInicioSesion" FunctionName="CopCR_DevModel.Store.ValidarInicioSesion">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="CopCR_DevModel.ValidarInicioSesion_Result">
-                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
-                <ScalarProperty Name="CedulaIdentidad" ColumnName="CedulaIdentidad" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
-                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="FotoPerfilUrl" ColumnName="FotoPerfilUrl" />
-                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ActualizarPerfilUsuario" FunctionName="CopCR_DevModel.Store.ActualizarPerfilUsuario" />
+          <FunctionImportMapping FunctionImportName="CambiarContrasenaUsuario" FunctionName="CopCR_DevModel.Store.CambiarContrasenaUsuario" />
           <FunctionImportMapping FunctionImportName="ConsultarPerfilUsuario" FunctionName="CopCR_DevModel.Store.ConsultarPerfilUsuario">
             <ResultMapping>
               <ComplexTypeMapping TypeName="CopCR_DevModel.ConsultarPerfilUsuario_Result">
@@ -1060,7 +925,23 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="CambiarContrasenaUsuario" FunctionName="CopCR_DevModel.Store.CambiarContrasenaUsuario" />
+          <FunctionImportMapping FunctionImportName="RegistroUsuario" FunctionName="CopCR_DevModel.Store.RegistroUsuario" />
+          <FunctionImportMapping FunctionImportName="ValidarInicioSesion" FunctionName="CopCR_DevModel.Store.ValidarInicioSesion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CopCR_DevModel.ValidarInicioSesion_Result">
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="CedulaIdentidad" ColumnName="CedulaIdentidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="FotoPerfilUrl" ColumnName="FotoPerfilUrl" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

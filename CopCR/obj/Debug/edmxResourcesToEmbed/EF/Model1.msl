@@ -9,15 +9,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Canton">
-      <EntityTypeMapping TypeName="CopCR_DevModel.Canton">
-        <MappingFragment StoreEntitySet="Canton">
-          <ScalarProperty Name="CantonID" ColumnName="CantonID" />
-          <ScalarProperty Name="ProvinciaID" ColumnName="ProvinciaID" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="CategoriaIncidente">
       <EntityTypeMapping TypeName="CopCR_DevModel.CategoriaIncidente">
         <MappingFragment StoreEntitySet="CategoriaIncidente">
@@ -32,22 +23,21 @@
         <MappingFragment StoreEntitySet="Direccion">
           <ScalarProperty Name="DireccionID" ColumnName="DireccionID" />
           <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
-          <ScalarProperty Name="DistritoID" ColumnName="DistritoID" />
-          <ScalarProperty Name="Barrio" ColumnName="Barrio" />
-          <ScalarProperty Name="Linea" ColumnName="Linea" />
-          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="TextoLibre" ColumnName="TextoLibre" />
           <ScalarProperty Name="Latitud" ColumnName="Latitud" />
           <ScalarProperty Name="Longitud" ColumnName="Longitud" />
           <ScalarProperty Name="GeoLocation" ColumnName="GeoLocation" />
+          <ScalarProperty Name="IsDomicilioPrincipal" ColumnName="IsDomicilioPrincipal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Distrito">
-      <EntityTypeMapping TypeName="CopCR_DevModel.Distrito">
-        <MappingFragment StoreEntitySet="Distrito">
-          <ScalarProperty Name="DistritoID" ColumnName="DistritoID" />
-          <ScalarProperty Name="CantonID" ColumnName="CantonID" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+    <EntitySetMapping Name="Estado">
+      <EntityTypeMapping TypeName="CopCR_DevModel.Estado">
+        <MappingFragment StoreEntitySet="Estado">
+          <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+          <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -63,7 +53,7 @@
           <ScalarProperty Name="Titulo" ColumnName="Titulo" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="FechaReporte" ColumnName="FechaReporte" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
           <ScalarProperty Name="CategoriaIncidenteID" ColumnName="CategoriaIncidenteID" />
           <ScalarProperty Name="AdministradorID" ColumnName="AdministradorID" />
           <ScalarProperty Name="FechaResolucion" ColumnName="FechaResolucion" />
@@ -90,14 +80,6 @@
           <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
           <ScalarProperty Name="IsLeido" ColumnName="IsLeido" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Provincia">
-      <EntityTypeMapping TypeName="CopCR_DevModel.Provincia">
-        <MappingFragment StoreEntitySet="Provincia">
-          <ScalarProperty Name="ProvinciaID" ColumnName="ProvinciaID" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -140,23 +122,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="RegistroUsuario" FunctionName="CopCR_DevModel.Store.RegistroUsuario" />
-    <FunctionImportMapping FunctionImportName="ValidarInicioSesion" FunctionName="CopCR_DevModel.Store.ValidarInicioSesion">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="CopCR_DevModel.ValidarInicioSesion_Result">
-          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
-          <ScalarProperty Name="CedulaIdentidad" ColumnName="CedulaIdentidad" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
-          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-          <ScalarProperty Name="FotoPerfilUrl" ColumnName="FotoPerfilUrl" />
-          <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ActualizarPerfilUsuario" FunctionName="CopCR_DevModel.Store.ActualizarPerfilUsuario" />
+    <FunctionImportMapping FunctionImportName="CambiarContrasenaUsuario" FunctionName="CopCR_DevModel.Store.CambiarContrasenaUsuario" />
     <FunctionImportMapping FunctionImportName="ConsultarPerfilUsuario" FunctionName="CopCR_DevModel.Store.ConsultarPerfilUsuario">
       <ResultMapping>
         <ComplexTypeMapping TypeName="CopCR_DevModel.ConsultarPerfilUsuario_Result">
@@ -175,6 +142,22 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="CambiarContrasenaUsuario" FunctionName="CopCR_DevModel.Store.CambiarContrasenaUsuario" />
+    <FunctionImportMapping FunctionImportName="RegistroUsuario" FunctionName="CopCR_DevModel.Store.RegistroUsuario" />
+    <FunctionImportMapping FunctionImportName="ValidarInicioSesion" FunctionName="CopCR_DevModel.Store.ValidarInicioSesion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CopCR_DevModel.ValidarInicioSesion_Result">
+          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+          <ScalarProperty Name="CedulaIdentidad" ColumnName="CedulaIdentidad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="FotoPerfilUrl" ColumnName="FotoPerfilUrl" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

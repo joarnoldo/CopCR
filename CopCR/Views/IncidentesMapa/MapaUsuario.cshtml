@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Mapa de Incidentes";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+}
+
+<div class="container-fluid mb-5 mt-4">
+    <div class="row">
+        <!-- Panel de filtros -->
+        <div class="col-md-3">
+            <h5>Filtros</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filter-own" checked>
+                <label class="form-check-label" for="filter-own">Mis incidentes</label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="filter-others" checked>
+                <label class="form-check-label" for="filter-others">Incidentes de otros</label>
+            </div>
+            <div class="form-group">
+                <label for="filter-category">Categoría</label>
+                <select id="filter-category" class="form-control">
+                    <option value="">Todas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Radio (<span id="radius-value">5</span> km)</label>
+                <input type="range"
+                       id="filter-radius"
+                       class="form-control-range"
+                       min="1"
+                       max="50"
+                       value="5" />
+            </div>
+            <div class="form-group">
+                <label>Centro de radio</label>
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="radioCenter"
+                           id="center-domicilio"
+                           value="domicilio"
+                           checked />
+                    <label class="form-check-label" for="center-domicilio">Domicilio</label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input"
+                           type="radio"
+                           name="radioCenter"
+                           id="center-actual"
+                           value="actual" />
+                    <label class="form-check-label" for="center-actual">Actual</label>
+                </div>
+            </div>
+
+            <!-- NUEVO: Botón para activar edición de domicilio -->
+            <button id="btn-editar-domicilio" class="btn btn-sm btn-outline-secondary mb-2">
+                Editar domicilio
+            </button>
+
+            <button id="btn-actual" class="btn btn-sm btn-outline-primary mb-3">
+                Usar ubicación actual
+            </button>
+            <hr />
+            <small>Haz clic en el mapa para definir tu domicilio principal.</small>
+        </div>
+
+        <!-- Mapa Leaflet -->
+        <div class="col-md-9">
+            <div id="map"
+                 data-userid="@Session["IdUsuario"]"
+                 class="w-100"
+                 style="height:600px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="~/Scripts/MapaUsuario.js"></script>
+}

@@ -4,22 +4,26 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>CopCR - @ViewBag.Title</title>
+    <title>CopCR – @ViewBag.Title</title>
 
-    <!-- Bootstrap y CSS -->
-    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="~/Content/style.css?v=2" />
-    <link rel="stylesheet" type="text/css" href="~/Content/myStyle.css?v=3" />
-    <link rel="stylesheet" type="text/css" href="~/Content/responsive.css" />
+    <!-- Bootstrap y CSS globales -->
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/style.css?v=2" />
+    <link rel="stylesheet" href="~/Content/myStyle.css?v=3" />
+    <link rel="stylesheet" href="~/Content/responsive.css" />
+
+    <!-- Estilos específicos por vista -->
+    @RenderSection("Styles", required: false)
 </head>
 <body class="d-flex flex-column min-vh-100">
+
     <!-- Header / Navbar -->
     <header class="header_section">
         <div class="container">
-            <nav class="navbar navbar-expand-lg custom_nav-container ">
-                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <a class="navbar-brand" href="@Url.Action("Index","Home")">
                     <div class="logo_box">
-                        <img src="~/Content/Images/logo.png" alt="CopCR – vigilancia ciudadana">
+                        <img src="~/Content/Images/logo.png" alt="CopCR – vigilancia ciudadana" />
                     </div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -31,13 +35,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto mr-2">
                         <li class="nav-item active">
-                            <a class="nav-link" href="@Url.Action("Index", "Home")">Inicio <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="@Url.Action("Index","Home")">
+                                Inicio <span class="sr-only">(current)</span>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Reportar Incidente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#map">Ver Mapa</a>
+                            <a class="nav-link" href="@Url.Action("MapaUsuario","IncidentesMapa")">
+                                Ver Mapa
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Estadísticas</a>
@@ -46,13 +54,22 @@
                             <a class="nav-link" href="#contact">Contacto</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="@(Session["FotoPerfilUrl"] as string ?? Url.Content("~/Content/Images/logo.png"))" class="rounded-circle mr-2" style="width:30px;height:30px;object-fit:cover;" alt="Usuario" />
+                            <a class="nav-link dropdown-toggle d-flex align-items-center"
+                               href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <img src="@(Session["FotoPerfilUrl"] as string ?? Url.Content("~/Content/Images/logo.png"))"
+                                     class="rounded-circle mr-2"
+                                     style="width:30px;height:30px;object-fit:cover;"
+                                     alt="Usuario" />
                                 @Session["NombreUsuario"]
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="@Url.Action("ConsultarPerfilUsuario", "Usuario")">Consultar Perfil</a>
-                                <a class="dropdown-item" href="@Url.Action("CerrarSesion", "Home")">Cerrar sesión</a>
+                                <a class="dropdown-item" href="@Url.Action("ConsultarPerfilUsuario","Usuario")">
+                                    Consultar Perfil
+                                </a>
+                                <a class="dropdown-item" href="@Url.Action("CerrarSesion","Home")">
+                                    Cerrar sesión
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -61,38 +78,41 @@
         </div>
     </header>
 
-    <!-- Vistas Contenido -->
-    <main>
+    <!-- Contenido principal -->
+    <main class="flex-fill">
         @RenderBody()
     </main>
 
     <!-- Footer -->
-    <footer class="container-fluid footer_section">
-        <div>
-            <div class="row">
-                <div class="col-md-6 mb-2 mb-md-0">
-                    <p class="mb-1">
-                        Correo:
-                        <a href="mailto:comitedevecinos@email.com" class="text-light">
-                            comitedevecinos@email.com
-                        </a>
-                    </p>
-                    <p class="mb-0">
-                        Teléfono:
-                        <a href="tel:88888888" class="text-light">8888-8888</a>
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 2025 CopCR. Todos los derechos reservados.</p>
-                </div>
+    <footer class="container-fluid footer_section mt-auto">
+        <div class="row">
+            <div class="col-md-6 mb-2 mb-md-0">
+                <p class="mb-1">
+                    Correo:
+                    <a href="mailto:comitedevecinos@email.com"
+                       class="text-light">
+                        comitedevecinos@email.com
+                    </a>
+                </p>
+                <p class="mb-0">
+                    Teléfono:
+                    <a href="tel:88888888" class="text-light">8888-8888</a>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p class="mb-0">&copy; 2025 CopCR. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <!-- Scripts globales -->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <!-- Scripts específicos por vista -->
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
+
 
 

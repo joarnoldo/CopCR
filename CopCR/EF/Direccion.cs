@@ -22,15 +22,13 @@ namespace CopCR.EF
     
         public int DireccionID { get; set; }
         public int UsuarioID { get; set; }
-        public short DistritoID { get; set; }
-        public string Barrio { get; set; }
-        public string Linea { get; set; }
-        public string CodigoPostal { get; set; }
-        public Nullable<decimal> Latitud { get; set; }
-        public Nullable<decimal> Longitud { get; set; }
+        public string Alias { get; set; }
+        public string TextoLibre { get; set; }
+        public decimal Latitud { get; set; }
+        public decimal Longitud { get; set; }
         public System.Data.Entity.Spatial.DbGeography GeoLocation { get; set; }
+        public bool IsDomicilioPrincipal { get; set; }
     
-        public virtual Distrito Distrito { get; set; }
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incidente> Incidente { get; set; }

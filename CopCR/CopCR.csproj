@@ -134,11 +134,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IncidentesMapaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="EF\Administrador.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EF\Canton.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\CategoriaIncidente.cs">
@@ -150,7 +148,7 @@
     <Compile Include="EF\Direccion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\Distrito.cs">
+    <Compile Include="EF\Estado.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Incidente.cs">
@@ -175,9 +173,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="EF\Notificacion.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EF\Provincia.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\sysdiagrams.cs">
@@ -246,6 +241,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\MapaUsuario.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.js" />
@@ -272,6 +268,7 @@
     <Content Include="Views\Home\RecuperarContrasena.cshtml" />
     <Content Include="Views\Usuario\ConsultarPerfilUsuario.cshtml" />
     <Content Include="Views\Usuario\CambiarContrasena.cshtml" />
+    <Content Include="Views\IncidentesMapa\MapaUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

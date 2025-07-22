@@ -3,28 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|c:\\users\\jloca\\desktop\\universidad\\prograavanzada\\copcr\\copcr\\views\\usuario\\cambiarcontrasena.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\usuario\\cambiarcontrasena.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\incidentesmapa\\mapausuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\incidentesmapa\\mapausuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|c:\\users\\jloca\\desktop\\universidad\\prograavanzada\\copcr\\copcr\\views\\usuario\\consultarperfilusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\usuario\\consultarperfilusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|c:\\users\\jloca\\desktop\\universidad\\prograavanzada\\copcr\\copcr\\scripts\\mapausuario.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\scripts\\mapausuario.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|c:\\users\\jloca\\desktop\\universidad\\prograavanzada\\copcr\\copcr\\controllers\\incidentesmapacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\controllers\\incidentesmapacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\shared\\_layoutinterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\shared\\_layoutinterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\usuario\\consultarperfilusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\usuario\\consultarperfilusuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\ef\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
       "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\ef\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\views\\usuario\\cambiarcontrasena.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\views\\usuario\\cambiarcontrasena.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\copcr\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B14433E-69B6-41AD-81D4-6798E4208E7C}|CopCR\\CopCR.csproj|solutionrelative:copcr\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +62,83 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MapaUsuario.js",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Scripts\\MapaUsuario.js",
+              "RelativeDocumentMoniker": "CopCR\\Scripts\\MapaUsuario.js",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Scripts\\MapaUsuario.js",
+              "RelativeToolTip": "CopCR\\Scripts\\MapaUsuario.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-21T23:11:37.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_LayoutInterno.cshtml",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Shared\\_LayoutInterno.cshtml",
+              "RelativeDocumentMoniker": "CopCR\\Views\\Shared\\_LayoutInterno.cshtml",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Shared\\_LayoutInterno.cshtml",
+              "RelativeToolTip": "CopCR\\Views\\Shared\\_LayoutInterno.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAGIAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-21T06:03:34.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IncidentesMapaController.cs",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\IncidentesMapaController.cs",
+              "RelativeDocumentMoniker": "CopCR\\Controllers\\IncidentesMapaController.cs",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\IncidentesMapaController.cs",
+              "RelativeToolTip": "CopCR\\Controllers\\IncidentesMapaController.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAYwFwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T05:59:58.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MapaUsuario.cshtml",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\IncidentesMapa\\MapaUsuario.cshtml",
+              "RelativeDocumentMoniker": "CopCR\\Views\\IncidentesMapa\\MapaUsuario.cshtml",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\IncidentesMapa\\MapaUsuario.cshtml",
+              "RelativeToolTip": "CopCR\\Views\\IncidentesMapa\\MapaUsuario.cshtml",
+              "ViewState": "AgIAACgAAAAAAAAAAAAwwFIAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-21T05:29:20.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Model1.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\EF\\Model1.edmx",
+              "RelativeDocumentMoniker": "CopCR\\EF\\Model1.edmx",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\EF\\Model1.edmx [Diagram1]",
+              "RelativeToolTip": "CopCR\\EF\\Model1.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2025-07-21T05:09:11.344Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Web.config",
+              "RelativeDocumentMoniker": "CopCR\\Web.config",
+              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Web.config",
+              "RelativeToolTip": "CopCR\\Web.config",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAADsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-07-21T05:05:45.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "CambiarContrasena.cshtml",
               "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Usuario\\CambiarContrasena.cshtml",
               "RelativeDocumentMoniker": "CopCR\\Views\\Usuario\\CambiarContrasena.cshtml",
@@ -50,37 +146,23 @@
               "RelativeToolTip": "CopCR\\Views\\Usuario\\CambiarContrasena.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-21T01:30:22.248Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T01:30:22.248Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "ConsultarPerfilUsuario.cshtml",
               "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Usuario\\ConsultarPerfilUsuario.cshtml",
               "RelativeDocumentMoniker": "CopCR\\Views\\Usuario\\ConsultarPerfilUsuario.cshtml",
               "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Usuario\\ConsultarPerfilUsuario.cshtml",
               "RelativeToolTip": "CopCR\\Views\\Usuario\\ConsultarPerfilUsuario.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-20T23:38:50.699Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-20T23:38:50.699Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Model1.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\EF\\Model1.edmx",
-              "RelativeDocumentMoniker": "CopCR\\EF\\Model1.edmx",
-              "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\EF\\Model1.edmx [Diagram1]",
-              "RelativeToolTip": "CopCR\\EF\\Model1.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2025-07-20T23:19:05.228Z",
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "UsuarioModel.cs",
               "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Models\\UsuarioModel.cs",
               "RelativeDocumentMoniker": "CopCR\\Models\\UsuarioModel.cs",
@@ -88,25 +170,24 @@
               "RelativeToolTip": "CopCR\\Models\\UsuarioModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-20T18:12:45.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-20T18:12:45.925Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UsuarioController.cs",
               "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\UsuarioController.cs",
               "RelativeDocumentMoniker": "CopCR\\Controllers\\UsuarioController.cs",
               "ToolTip": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Controllers\\UsuarioController.cs",
               "RelativeToolTip": "CopCR\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAYwGkAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-20T17:58:03.456Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\jloca\\Desktop\\Universidad\\PrograAvanzada\\CopCR\\CopCR\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "CopCR\\Views\\Home\\Index.cshtml",
@@ -114,8 +195,7 @@
               "RelativeToolTip": "CopCR\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-30T03:36:11.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-30T03:36:11.813Z"
             }
           ]
         }

@@ -21,6 +21,7 @@ namespace CopCR.EF
         public string Email { get; set; }
         public string NombreUsuario { get; set; }
         public string FotoPerfilUrl { get; set; }
+        public string Contrasena { get; set; }
         public string TipoUsuario { get; set; }
     }
 }

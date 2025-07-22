@@ -12,20 +12,19 @@ namespace CopCR.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Distrito
+    public partial class Estado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Distrito()
+        public Estado()
         {
-            this.Direccion = new HashSet<Direccion>();
+            this.Incidente = new HashSet<Incidente>();
         }
     
-        public short DistritoID { get; set; }
-        public short CantonID { get; set; }
-        public string Nombre { get; set; }
+        public byte EstadoId { get; set; }
+        public string NombreEstado { get; set; }
+        public string Descripcion { get; set; }
     
-        public virtual Canton Canton { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Direccion> Direccion { get; set; }
+        public virtual ICollection<Incidente> Incidente { get; set; }
     }
 }
